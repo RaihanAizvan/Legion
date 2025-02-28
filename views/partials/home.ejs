@@ -1,1 +1,85 @@
-<h1 class="text-3xl text-center text-green-700">Welcome to Legion</h1>
+<style>
+    .text-neon-green {
+  color: #00FF99;
+}
+
+.bg-dark {
+  background-color: #1a1a1a;
+}
+
+.text-pink {
+  color: #FF007F;
+}
+
+.border-neon-green {
+  border-color: #00FF99;
+}
+
+.glitch {
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 2px #00FF99;
+  }
+  50% {
+    text-shadow: -2px -2px #FF007F;
+  }
+  100% {
+    text-shadow: 2px 2px #00FF99;
+  }
+}
+
+</style>
+
+<div class="w-full text-center my-6">
+    <img src="/images/logo2.png" alt="Legion Logo" class="w-40 mx-auto animate-pulse">
+  </div>
+
+
+    <div class="mt-6">
+        <table class="border border-neon-green w-full max-w-2xl mx-auto shadow-lg">
+            <thead>
+                <tr class="bg-dark text-neon-green">
+                    <th class="p-3 border border-neon-green">Technology</th>
+                    <th class="p-3 border border-neon-green">Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="p-3 border border-neon-green">Node.js</td>
+                    <td class="p-3 border border-neon-green">Backend Runtime</td>
+                </tr>
+                <tr>
+                    <td class="p-3 border border-neon-green">Express.js</td>
+                    <td class="p-3 border border-neon-green">Backend Framework</td>
+                </tr>
+                <tr>
+                    <td class="p-3 border border-neon-green">MongoDB</td>
+                    <td class="p-3 border border-neon-green">Database</td>
+                </tr>
+                <tr>
+                    <td class="p-3 border border-neon-green">EJS</td>
+                    <td class="p-3 border border-neon-green">Templating Engine</td>
+                </tr>
+                <tr>
+                    <td class="p-3 border border-neon-green">Tailwind CSS</td>
+                    <td class="p-3 border border-neon-green">Styling Framework</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <h2 class="text-3xl mt-10 text-neon-green underline">🎯 Upcoming Features</h2>
+    <ul class="text-lg mt-4 space-y-2">
+        <li>🔥 Player Leaderboards</li>
+        <li>📊 Online Player Status</li>
+        <li>🏆 Game Achievements System</li>
+        <li>🛡️ Admin Panel</li>
+    </ul>
+    
+    <div class="mt-10">
+        <p class="text-lg">💀 This project is under development...</p>
+        <p class="text-lg">By the one and only <span class="text-pink glitch">Mohammed Raihan</span></p>
+    </div>

@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - /bin/bash -c "npm install"
+    - /bin/bash -c "node app.js &" # Starts the server in the background
