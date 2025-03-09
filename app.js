@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import webRoutes from './routes/web.js';
+import userRoutes from './routes/userroutes.js';
 import expressLayouts from "express-ejs-layouts";
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -43,7 +43,7 @@ app.set('layout', './index')
 
 
 // Routes
-app.use('/', webRoutes);
+app.use('/', userRoutes);
 
 // Start Server
 if (process.env.NODE_ENV !== "production") {

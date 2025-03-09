@@ -1,0 +1,313 @@
+
+
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+    @import url('https://fonts.cdnfonts.com/css/poppins');
+    
+    body {
+      background-color: #D2D2D2;
+      background-image:
+        repeating-linear-gradient(
+          to right, transparent 0 100px,
+          #25283b22 100px 101px
+        ),
+        repeating-linear-gradient(
+          to bottom, transparent 0 100px,
+          #25283b22 100px 101px
+        );
+    }
+    
+    .content h1::after {
+      position: absolute;
+      inset: 0;
+      content: attr(data-content);
+      z-index: 2;
+      -webkit-text-stroke: 2px #d2d2d2;
+      color: transparent;
+    }
+    
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+
+    .h-r-50{
+        height:50rem;
+    }
+    
+    .slide-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 5;
+    }
+  </style>
+
+  <div class="w-full h-r-50 text-center overflow-hidden relative">
+    <h2 class="text-3xl font-bold my-6 text-white">Featured Announcements</h2>
+    <div class="mt-16 absolute w-4/5 h-[250px] top-[10%] left-[10%] transform-style-3d z-10" 
+         style="transform: perspective(1000px) rotateX(-10deg);"
+         x-data="carousel()" 
+         x-init="init()">
+      <div class="carousel relative w-full h-full transform-style-3d transition-transform duration-300 ease-out"
+           :style="`transform: rotateY(${currentRotation}deg);`">
+        
+        <template x-for="(slide, index) in slides" :key="index">
+          <div class="absolute w-[400px] h-[250px] left-[calc(50%-200px)] backface-hidden overflow-hidden rounded-lg shadow-xl transition-transform duration-100 ease-out"
+               :style="`transform: rotateY(${(360 / slides.length) * index}deg) translateZ(500px);`">
+            <img :src="slide.image" :alt="slide.title" class="w-full h-full object-cover">
+            <div class="slide-title" x-text="slide.title"></div>
+          </div>
+        </template>
+      </div>
+      <!-- Navigation Controls -->
+      <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
+        <button @click="rotate('left')" class="p-3 rounded-full bg-black bg-opacity-60 text-white hover:bg-opacity-80 z-10 focus:outline-none transition-all duration-200 transform hover:scale-120 active:scale-95">
+          &larr;
+        </button>
+        <button @click="rotate('right')" class="p-3 rounded-full bg-black bg-opacity-60 text-white hover:bg-opacity-80 z-10 focus:outline-none transition-all duration-200 transform hover:scale-120 active:scale-95">
+          &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function carousel() {
+    return {
+        currentRotation: 0,
+        isDragging: false,
+        startX: 0,
+        velocity: 0,
+        momentumInterval: null,
+        autoSpinInterval: null,
+        lastTime: 0,
+        slides: [],
+        targetRotation: 0,
+        isAnimating: false,
+
+        init() {
+            // Fetch slides data - this could come from an API or other data source
+            this.slides = [
+                {
+                    title: 'New Season Update!',
+                    description:"This will be the description",
+                    image: 'https://www.amd.com/content/dam/amd/en/images/backgrounds/products/2922918-radeon-9000-series-gc.jpg',
+                },
+                {
+                    title: 'Weekend Event: Double XP',
+                    description:"This will be the description",
+
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/55ff55?text=Double+XP+Weekend',
+                },
+                {
+                    title: 'Server Maintenance Notice',
+                    description:"This will be the description",
+
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/5555ff?text=Server+Maintenance',
+                },
+                {
+                    title: 'New Dungeon Released',
+                    description:"This will be the description",
+
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/ffff55?text=New+Dungeon',
+                },
+                {
+                    title: 'Community Event',
+                    description:"This will be the description",
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/ff55ff?text=Community+Event',
+                },
+                {
+                    title: 'New Quests Available',
+                    description:"This will be the description",
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/55ffff?text=New+Quests',
+                },
+                {
+                    title: 'PvP Tournament',
+                    description:"This will be the description",
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/ffaa55?text=PvP+Tournament',
+                },
+                {
+                    title: 'Map Expansion',
+                    description:"This will be the description",
+                    image: 'https://via.placeholder.com/600x600/1a1a1a/55aaff?text=Map+Expansion',
+                }
+            ];
+            
+            this.lastTime = performance.now();
+            this.enableDragRotation();
+            this.startAutoSpin();
+            
+            // Use requestAnimationFrame for smoother animations
+            this.animateCarousel();
+        },
+
+        enableDragRotation() {
+            const carousel = document.querySelector('.carousel');
+            if (!carousel) return;
+
+            const self = this;
+            let initialRotation = 0;
+            let lastX = 0;
+            let dragVelocity = 0;
+            let lastDragTime = 0;
+
+            carousel.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                self.isDragging = true;
+                self.startX = e.clientX;
+                lastX = e.clientX;
+                initialRotation = self.currentRotation;
+                lastDragTime = performance.now();
+                self.stopMomentum();
+                self.stopAutoSpin();
+                document.body.style.cursor = 'grabbing';
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!self.isDragging) return;
+                
+                const now = performance.now();
+                const deltaTime = now - lastDragTime;
+                const diff = e.clientX - lastX;
+                
+                if (deltaTime > 0) {
+                    // Calculate instantaneous velocity (pixels per millisecond)
+                    dragVelocity = diff / deltaTime * 10;
+                }
+                
+                const totalDiff = e.clientX - self.startX;
+                self.velocity = dragVelocity;
+                self.targetRotation = initialRotation + totalDiff * 0.5;
+                
+                lastX = e.clientX;
+                lastDragTime = now;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!self.isDragging) return;
+                self.isDragging = false;
+                document.body.style.cursor = '';
+                self.startMomentum();
+                setTimeout(() => self.startAutoSpin(), 2000);
+            });
+
+            // Touch Support
+            carousel.addEventListener('touchstart', (e) => {
+                self.isDragging = true;
+                self.startX = e.touches[0].clientX;
+                lastX = e.touches[0].clientX;
+                initialRotation = self.currentRotation;
+                lastDragTime = performance.now();
+                self.stopMomentum();
+                self.stopAutoSpin();
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!self.isDragging) return;
+                
+                const now = performance.now();
+                const deltaTime = now - lastDragTime;
+                const diff = e.touches[0].clientX - lastX;
+                
+                if (deltaTime > 0) {
+                    // Calculate instantaneous velocity
+                    dragVelocity = diff / deltaTime * 10;
+                }
+                
+                const totalDiff = e.touches[0].clientX - self.startX;
+                self.velocity = dragVelocity;
+                self.targetRotation = initialRotation + totalDiff * 0.5;
+                
+                lastX = e.touches[0].clientX;
+                lastDragTime = now;
+            }, { passive: true });
+
+            window.addEventListener('touchend', () => {
+                if (!self.isDragging) return;
+                self.isDragging = false;
+                self.startMomentum();
+                setTimeout(() => self.startAutoSpin(), 2000);
+            });
+        },
+
+        animateCarousel() {
+            const now = performance.now();
+            const deltaTime = now - this.lastTime;
+            this.lastTime = now;
+            
+            // Smooth interpolation between current and target rotation
+            if (!this.isDragging && Math.abs(this.targetRotation - this.currentRotation) > 0.01) {
+                this.currentRotation += (this.targetRotation - this.currentRotation) * 0.1;
+            }
+            
+            requestAnimationFrame(this.animateCarousel.bind(this));
+        },
+
+        startMomentum() {
+            const self = this;
+            let lastTime = performance.now();
+            
+            self.momentumInterval = setInterval(() => {
+                const now = performance.now();
+                const deltaTime = now - lastTime;
+                lastTime = now;
+                
+                if (Math.abs(self.velocity) < 0.05) {
+                    self.velocity = 0;
+                    self.stopMomentum();
+                    return;
+                }
+
+                // Apply velocity with time-based damping
+                self.targetRotation += self.velocity * (deltaTime / 16);
+                self.velocity *= Math.pow(0.95, deltaTime / 16); // Smooth deceleration
+            }, 16);
+        },
+
+        stopMomentum() {
+            clearInterval(this.momentumInterval);
+        },
+
+        startAutoSpin() {
+            const self = this;
+            let lastTime = performance.now();
+            
+            self.autoSpinInterval = setInterval(() => {
+                const now = performance.now();
+                const deltaTime = now - lastTime;
+                lastTime = now;
+                
+                // Time-based rotation for consistent speed regardless of frame rate
+                self.targetRotation += 0.01 * (deltaTime / 16);
+            }, 16);
+        },
+
+        stopAutoSpin() {
+            clearInterval(this.autoSpinInterval);
+        },
+
+        rotate(direction) {
+            this.stopAutoSpin();
+            this.stopMomentum();
+            
+            const anglePerSlide = 360 / this.slides.length;
+            if (direction === 'left') {
+                this.targetRotation -= anglePerSlide;
+                this.velocity = -2; // Give it a little momentum
+            } else {
+                this.targetRotation += anglePerSlide;
+                this.velocity = 2; // Give it a little momentum
+            }
+            
+            this.startMomentum();
+            setTimeout(() => this.startAutoSpin(), 2000);
+        }
+    };
+}
+  </script>
