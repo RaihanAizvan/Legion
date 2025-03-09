@@ -1,0 +1,231 @@
+<div class="bg-gradient-to-b mt-5 rounded-xl from-black via-gray-900 to-black text-white py-20 relative overflow-hidden">
+  <!-- Background image with reduced opacity -->
+  <div class="absolute inset-0 z-0 bg-cover bg-center opacity-30" style="background-image: url('https://img.freepik.com/premium-photo/abstract-background-modern-tile-wall-3d-rendering_118019-399.jpg?semt=ais_hybrid'); background-size: 1500px; background-position-x: 150px; background-position-y: -60px;"></div>
+  
+  <!-- Animated particles background -->
+  <div class="absolute inset-0 z-1 particles-container" id="particles-js"></div>
+  
+  <!-- Futuristic decorative elements -->
+  <div class="hidden md:block absolute top-10 left-10 w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+  <div class="hidden md:block absolute bottom-10 right-10 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse-slow"></div>
+  <div class="hidden md:block absolute top-40 right-20 w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-bounce"></div>
+  
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <!-- Futuristic header with Legion on right side -->
+      <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+        <div class="md:w-2/5 text-center md:text-left mb-8 md:mb-0">
+          <h3 class="text-2xl font-sans text-blue-200 mb-2 animate-fade-in">Welcome to</h3>
+          <p class="text-lg text-gray-300 border-l-4 border-white pl-4 italic animate-slide-in">The ultimate Minecraft experience</p>
+        </div>
+        <div class="md:w-3/5 text-right">
+          <h2 class="text-7xl md:text-8xl font-bold relative inline-block">
+            <span class="relative z-10 px-1 text-white animate-glow" id="letter-L">L</span>
+            <span class="relative z-10 px-1 text-gray-300 animate-float" id="letter-E">E</span>
+            <span class="relative z-10 px-1 text-white animate-glow" id="letter-G">G</span>
+            <span class="relative z-10 px-1 text-gray-300 animate-float" id="letter-I">I</span>
+            <span class="relative z-10 px-1 text-white animate-glow" id="letter-O">O</span>
+            <span class="relative z-10 px-1 text-gray-300 animate-float" id="letter-N">N</span>
+          </h2>
+          <div class="w-full h-0.5 bg-white mt-2 animate-pulse"></div>
+          <div class="w-3/4 h-0.5 bg-gray-500 mt-1 ml-auto animate-pulse" style="animation-delay: 0.3s"></div>
+          <div class="w-1/2 h-0.5 bg-gray-700 mt-1 ml-auto animate-pulse" style="animation-delay: 0.6s"></div>
+        </div>
+      </div>
+      
+      <div class="w-full h-0.5 bg-gradient-to-r from-blue-500 via-white to-purple-500 mx-auto mb-10 animate-pulse"></div>
+      
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Futuristic content panel -->
+        <div class="md:w-2/3 bg-gradient-to-br from-gray-900 to-black p-8 rounded-lg border border-gray-700 mb-10 md:mb-0 shadow-lg shadow-blue-500/20 backdrop-blur-sm">
+          <p class="text-lg text-blue-100 mb-6 font-sans leading-relaxed animate-fade-in-delay-1">
+            Join our thriving Minecraft community where adventure, creativity, and friendship await. 
+            Whether you're a seasoned player or new to the game, Legion offers a unique gaming experience 
+            with custom features, events, and a supportive community.
+          </p>
+          
+          <p class="text-lg text-blue-100 mb-6 font-sans leading-relaxed animate-fade-in-delay-2">
+            Explore vast landscapes, build incredible structures, battle fearsome monsters, 
+            and forge alliances with players from around the world. Your journey begins here!
+          </p>
+        </div>
+        
+        <!-- Server Information Panel -->
+        <div class="md:w-1/3">
+          <div class="bg-black bg-opacity-70 p-6 rounded-xl border border-opacity-50 border-blue-500 backdrop-filter backdrop-blur-sm shadow-2xl transform transition-all duration-300 hover:border-purple-500 hover:bg-opacity-100 hover:-translate-y-1 animate-fade-in-delay-2">
+            <h3 class="text-white text-xl font-bold mb-4 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">Server Information</h3>
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-gray-300">Status:</span>
+              <span class="text-green-400 flex items-center">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-ping"></span>
+                Online
+              </span>
+            </div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-gray-300">Players:</span>
+              <span class="text-white">21/500</span>
+            </div>
+            
+            <!-- IP Address with larger display -->
+            <div class="mt-4 mb-5 bg-gradient-to-r border border-opacity-30 border-blue-500 from-gray-900 to-gray-800 p-3 rounded-lg text-center animate-pulse-slow">
+              <span class="text-gray-300 text-sm block mb-1">IP Address:</span>
+              <span class="text-white text-2xl font-bold tracking-wider">legionmc.space</span>
+            </div>
+            
+            <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 py-3 rounded text-white font-semibold transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/30 flex items-center justify-center animate-fade-in-delay-3" onclick="navigator.clipboard.writeText('legionmc.space')">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+            </svg>
+              Copy IP
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-6 mt-6">
+        <a href="/register" class="group bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-8 rounded-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50 cursor-pointer animate-fade-in-delay-3">
+          <span class="flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+            </svg>
+            Join Our Community
+          </span>
+        </a>
+        
+        <a href="/server-info" class="group bg-gradient-to-r from-gray-800 to-gray-900 text-white font-semibold py-4 px-8 rounded-md border border-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 cursor-pointer animate-fade-in-delay-4">
+          <span class="flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Learn More
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize particles.js with white/blue particles
+        particlesJS('particles-js', {
+        particles: {
+          number: { value: 100, density: { enable: true, value_area: 800 } },
+          color: { value: ["#ffffff", "#4f46e5", "#3b82f6", "#8b5cf6"] },
+          shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+          opacity: { value: 0.5, random: true },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+            repulse: { distance: 100, duration: 0.4 },
+            push: { particles_nb: 4 }
+          }
+        }
+    });
+});
+
+
+// legiontext
+  document.addEventListener('DOMContentLoaded', function() {
+    const letters = ['L', 'E', 'G', 'I', 'O', 'N'];
+    let currentIndex = 0;
+    
+    function alternateGlow() {
+      // Reset all letters
+      letters.forEach(letter => {
+        const el = document.getElementById(`letter-${letter}`);
+        el.classList.remove('animate-glow');
+        el.classList.add('animate-float');
+        el.style.textShadow = '0 0 5px #fff';
+        el.classList.remove('text-white');
+        el.classList.add('text-gray-300');
+      });
+      
+      // Apply glow to current letter
+      const currentLetter = document.getElementById(`letter-${letters[currentIndex]}`);
+      currentLetter.classList.remove('animate-float');
+      currentLetter.classList.add('animate-glow');
+      currentLetter.style.textShadow = '0 0 10px #fff, 0 0 15px #fff, 0 0 20px #4f46e5';
+      currentLetter.classList.remove('text-gray-300');
+      currentLetter.classList.add('text-white');
+      
+      // Move to next letter
+      currentIndex = (currentIndex + 1) % letters.length;
+    }
+    
+    // Start the alternating glow effect
+    setInterval(alternateGlow, 500);
+  });
+</script>
+
+<style>
+    .animate-pulse-slow {
+        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    .animate-glow {
+        animation: glow 3s ease-in-out infinite alternate;
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 1s ease-in forwards;
+    }
+    
+    .animate-fade-in-delay-1 {
+        opacity: 0;
+        animation: fadeIn 1s ease-in 0.3s forwards;
+    }
+    
+    .animate-fade-in-delay-2 {
+        opacity: 0;
+        animation: fadeIn 1s ease-in 0.6s forwards;
+    }
+    
+    .animate-fade-in-delay-3 {
+      opacity: 0;
+      animation: fadeIn 1s ease-in 0.9s forwards;
+    }
+    
+    .animate-fade-in-delay-4 {
+      opacity: 0;
+      animation: fadeIn 1s ease-in 1.2s forwards;
+    }
+    
+    .animate-slide-in {
+        animation: slideIn 1s ease-out forwards;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #4f46e5, 0 0 20px #4f46e5; }
+      to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4f46e5, 0 0 40px #4f46e5; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</div>
