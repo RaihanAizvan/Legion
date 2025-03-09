@@ -1,277 +1,427 @@
-<div class="bg-black text-white py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-10 text-center bss-600">Top Players This Season</h2>
-      
-      <!-- Top 3 Players Podium Style -->
-      <div class="flex flex-col md:flex-row justify-center items-end mb-12 gap-4">
-        <!-- 3rd Place (Left) -->
-        <div class="bg-gray-900 rounded-lg overflow-hidden border border-white transform transition-transform hover:scale-105 md:w-1/4 shadow-lg" style="height: 380px;">
-          <div class="h-32 bg-gradient-to-r from-gray-900 to-gray-800 flex items-center justify-center">
-            <img src="https://mc-heads.net/avatar/MHF_Blaze/100" alt="Player 3" class="w-20 h-20">
-          </div>
-          <div class="p-4">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="text-lg font-bold">CRISISHERE</h3>
-              <span class="bg-amber-700 text-black px-2 py-1 rounded text-sm font-bold">#3</span>
-            </div>
-            <div class="space-y-1">
-              <div class="flex justify-between">
-                <span class="text-gray-400">Kills:</span>
-                <span>987</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Win Rate:</span>
-                <span>79%</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Level:</span>
-                <span>91</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Clan:</span>
-                <span>Shadow Hunters</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Play Time:</span>
-                <span>342h</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 1st Place (Middle - Taller) -->
-        <div class="bg-gray-900 rounded-lg overflow-hidden border-2 border-yellow-500 transform transition-transform hover:scale-105 md:w-1/3 shadow-xl z-10" style="height: 450px;">
-          <div class="h-40 bg-gradient-to-r from-gray-800 to-gray-700 flex items-center justify-center relative">
-            <div class="absolute top-2 left-0 right-0 flex justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-              </svg>
-            </div>
-            <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Player 1" class="w-28 h-28">
-          </div>
-          <div class="p-6">
-            <div class="flex justify-between items-center mb-4">
-              <h3 class="text-2xl font-bold">RYHU</h3>
-              <span class="bg-yellow-500 text-black px-3 py-1 rounded text-sm font-bold">#1</span>
-            </div>
-            <div class="space-y-2">
-              <div class="flex justify-between">
-                <span class="text-gray-400">Kills:</span>
-                <span>1,245</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Win Rate:</span>
-                <span>87%</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Level:</span>
-                <span>98</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Team:</span>
-                <span>Zaynok</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Play Time:</span>
-                <span>512h</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Achievements:</span>
-                <span>42/50</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Tournaments Won:</span>
-                <span>7</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 2nd Place (Right) -->
-        <div class="bg-gray-900 rounded-lg overflow-hidden border border-white transform transition-transform hover:scale-105 md:w-1/4 shadow-lg" style="height: 410px;">
-          <div class="h-36 bg-gradient-to-r from-gray-900 to-gray-800 flex items-center justify-center">
-            <img src="https://mc-heads.net/avatar/MHF_Alex/100" alt="Player 2" class="w-24 h-24">
-          </div>
-          <div class="p-5">
-            <div class="flex justify-between items-center mb-3">
-              <h3 class="text-xl font-bold">Xiomi</h3>
-              <span class="bg-gray-300 text-black px-2 py-1 rounded text-sm font-bold">#2</span>
-            </div>
-            <div class="space-y-2">
-              <div class="flex justify-between">
-                <span class="text-gray-400">Kills:</span>
-                <span>1,118</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Win Rate:</span>
-                <span>82%</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Level:</span>
-                <span>95</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Clan:</span>
-                <span>Zaynok</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Play Time:</span>
-                <span>478h</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-400">Achievements:</span>
-                <span>38/50</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="flex flex-col md:flex-row gap-8">
-        <!-- Additional Rankings -->
-        <div class="md:w-3/4">
-          <h3 class="text-2xl font-bold mb-6 text-center">Leaderboard Rankings</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- 4th Place -->
-            <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 transform transition-transform hover:scale-102 flex items-center p-4">
-              <span class="bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold mr-4">#4</span>
-              <img src="https://mc-heads.net/avatar/Player4/64" alt="Player 4" class="w-12 h-12 mr-4">
-              <div class="flex-grow">
-                <h3 class="text-lg font-bold">EndWalker</h3>
-                <div class="flex justify-between text-sm">
-                  <span>Level: 89</span>
-                  <span>Kills: 932</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- 5th Place -->
-            <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 transform transition-transform hover:scale-102 flex items-center p-4">
-              <span class="bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold mr-4">#5</span>
-              <img src="https://mc-heads.net/avatar/Player5/64" alt="Player 5" class="w-12 h-12 mr-4">
-              <div class="flex-grow">
-                <h3 class="text-lg font-bold">IronFist</h3>
-                <div class="flex justify-between text-sm">
-                  <span>Level: 87</span>
-                  <span>Kills: 901</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- 6th Place -->
-            <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 transform transition-transform hover:scale-102 flex items-center p-4">
-              <span class="bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold mr-4">#6</span>
-              <img src="https://mc-heads.net/avatar/Player6/64" alt="Player 6" class="w-12 h-12 mr-4">
-              <div class="flex-grow">
-                <h3 class="text-lg font-bold">SkyReaper</h3>
-                <div class="flex justify-between text-sm">
-                  <span>Level: 85</span>
-                  <span>Kills: 876</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- 7th Place -->
-            <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-700 transform transition-transform hover:scale-102 flex items-center p-4">
-              <span class="bg-gray-700 text-white px-2 py-1 rounded text-sm font-bold mr-4">#7</span>
-              <img src="https://mc-heads.net/avatar/Player7/64" alt="Player 7" class="w-12 h-12 mr-4">
-              <div class="flex-grow">
-                <h3 class="text-lg font-bold">PhantomBlade</h3>
-                <div class="flex justify-between text-sm">
-                  <span>Level: 83</span>
-                  <span>Kills: 842</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- View More Button -->
-          <div class="mt-8 text-center">
-            <a href="/leaderboard" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-md border border-gray-600 transition-all duration-300 transform hover:-translate-y-1">
-              View Full Leaderboard
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-  
-        <!-- Online Players Section -->
-        <div class="md:w-1/4">
-          <div class="bg-gray-900 rounded-lg p-4 border border-gray-700 h-96">
-            <h3 class="text-xl font-bold mb-4 text-center">Online Players</h3>
-            <div class="h-72 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
-              <div class="space-y-2">
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player1/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player1</span>
-                    <span class="text-xs text-gray-400">Level 78</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player2/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player2</span>
-                    <span class="text-xs text-gray-400">Level 65</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player3/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player3</span>
-                    <span class="text-xs text-gray-400">Level 92</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player4/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player4</span>
-                    <span class="text-xs text-gray-400">Level 43</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player5/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player5</span>
-                    <span class="text-xs text-gray-400">Level 57</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player6/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player6</span>
-                    <span class="text-xs text-gray-400">Level 31</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player7/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player7</span>
-                    <span class="text-xs text-gray-400">Level 49</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player8/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player8</span>
-                    <span class="text-xs text-gray-400">Level 62</span>
-                  </div>
-                </div>
-                <div class="flex items-center gap-3 bg-gray-800 p-2 rounded hover:bg-gray-700 transition-colors">
-                  <img src="https://mc-heads.net/avatar/Player9/32" alt="Player" class="w-8 h-8">
-                  <div>
-                    <span class="block">Player9</span>
-                    <span class="text-xs text-gray-400">Level 38</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center text-gray-400 mt-2 text-sm">
-              21 players online now
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-cover bg-center opacity-30"
+        style="background-image: url('https://img.freepik.com/premium-photo/abstract-background-modern-tile-wall-3d-rendering_118019-399.jpg?semt=ais_hybrid'); background-size: 1500px; background-position-x: 150px; background-position-y: -60px;">
     </div>
-  </div>
+    <div class="absolute inset-0 z-1 particles-container" id="leaderboard-particles"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-black to-gray-900 opacity-60"></div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-10 animate-pulse"></div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <h2 class="text-4xl font-semibold mb-12 text-center text-blue-300 glowing-text">Top Players This Season</h2>
+
+        <div class="flex flex-col md:flex-row justify-center items-end mb-12 gap-8">
+            <div class="player-card" style="height: 460px;">
+                <div class="player-avatar">
+                    <img src="https://mc-heads.net/avatar/MHF_Blaze/100" alt="Player 3">
+                    <span class="player-rank">#3</span>
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">CRISISHERE</h3>
+                    <div class="player-stats">
+                        <span>Kills: 987</span>
+                        <span>Win Rate: 79%</span>
+                        <span>Level: 91</span>
+                        <span>Clan: Shadow Hunters</span>
+                        <span>Play Time: 342h</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card-gold" style="height: 530px;">
+                <div class="player-avatar-gold">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <img src="https://mc-heads.net/avatar/MHF_Steve/100" alt="Player 1">
+                    <span class="player-rank-gold">#1</span>
+                </div>
+                <div class="player-info-gold">
+                    <h3 class="player-name-gold">RYHU</h3>
+                    <div class="player-stats-gold">
+                        <span>Kills: 1,245</span>
+                        <span>Win Rate: 87%</span>
+                        <span>Level: 98</span>
+                        <span>Team: Zaynok</span>
+                        <span>Play Time: 512h</span>
+                        <span>Achievements: 42/50</span>
+                        <span>Tournaments Won: 7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-card" style="height: 460px;">
+                <div class="player-avatar">
+                    <img src="https://mc-heads.net/avatar/MHF_Alex/100" alt="Player 2">
+                    <span class="player-rank">#2</span>
+                </div>
+                <div class="player-info">
+                    <h3 class="player-name">Xiomi</h3>
+                    <div class="player-stats">
+                        <span>Kills: 1,118</span>
+                        <span>Win Rate: 82%</span>
+                        <span>Level: 95</span>
+                        <span>Clan: Zaynok</span>
+                        <span>Play Time: 478h</span>
+                        <span>Achievements: 38/50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="md:w-3/4">
+                <h3 class="text-3xl font-semibold mb-8 text-center text-cyan-300 glowing-text">Leaderboard Rankings</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="leaderboard-entry">
+                        <span class="leaderboard-rank">#4</span>
+                        <img src="https://mc-heads.net/avatar/Player4/64" alt="Player 4" class="leaderboard-avatar">
+                        <div class="leaderboard-details">
+                            <h3 class="leaderboard-name">EndWalker</h3>
+                            <div class="leaderboard-stats">
+                                <span>Level: 89</span>
+                                <span>Kills: 932</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-entry">
+                        <span class="leaderboard-rank">#5</span>
+                        <img src="https://mc-heads.net/avatar/Player5/64" alt="Player 5" class="leaderboard-avatar">
+                        <div class="leaderboard-details">
+                            <h3 class="leaderboard-name">IronFist</h3>
+                            <div class="leaderboard-stats">
+                                <span>Level: 87</span>
+                                <span>Kills: 901</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-entry">
+                        <span class="leaderboard-rank">#6</span>
+                        <img src="https://mc-heads.net/avatar/Player6/64" alt="Player 6" class="leaderboard-avatar">
+                        <div class="leaderboard-details">
+                            <h3 class="leaderboard-name">SkyReaper</h3>
+                            <div class="leaderboard-stats">
+                                <span>Level: 85</span>
+                                <span>Kills: 876</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-entry">
+                        <span class="leaderboard-rank">#7</span>
+                        <img src="https://mc-heads.net/avatar/Player7/64" alt="Player 7" class="leaderboard-avatar">
+                        <div class="leaderboard-details">
+                            <h3 class="leaderboard-name">PhantomBlade</h3>
+                            <div class="leaderboard-stats">
+                                <span>Level: 83</span>
+                                <span>Kills: 842</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <a href="/leaderboard"
+                        class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-md shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        View Full Leaderboard
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 animate-pulse" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="md:w-1/4">
+                <div class="bg-gradient-to-br from-gray-900 to-black rounded-lg p-6 border border-gray-700 shadow-lg h-96">
+                    <h3 class="text-2xl font-semibold mb-6 text-center text-pink-300 glowing-text">Online Players</h3>
+                    <div class="h-72 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
+                        <div class="space-y-3">
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player1/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player1</span>
+                                    <span class="online-level">Level 78</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player2/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player2</span>
+                                    <span class="online-level">Level 65</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player3/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player3</span>
+                                    <span class="online-level">Level 92</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player4/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player4</span>
+                                    <span class="online-level">Level 43</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player5/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player5</span>
+                                    <span class="online-level">Level 57</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player6/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player6</span>
+                                    <span class="online-level">Level 31</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player7/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player7</span>
+                                    <span class="online-level">Level 49</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player8/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player8</span>
+                                    <span class="online-level">Level 62</span>
+                                </div>
+                            </div>
+                            <div class="online-player">
+                                <img src="https://mc-heads.net/avatar/Player9/32" alt="Player" class="online-avatar">
+                                <div class="online-details">
+                                    <span class="online-name">Player9</span>
+                                    <span class="online-level">Level 38</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-gray-400 mt-3 text-sm">
+                        21 players online now
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            particlesJS('leaderboard-particles', {
+                particles: {
+                    number: { value: 40, density: { enable: true, value_area: 800 } },
+                    color: { value: ["#4f46e5", "#3b82f6", "#8b5cf6", "#ffffff"] },
+                    shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 4, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out" }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" }
+                    },
+                    modes: {
+                        repulse: { distance: 100, duration: 0.4 },
+                        push: { particles_nb: 4 }
+                    }
+                }
+            });
+        });
+    </script>
+    <style>
+        .player-card, .player-card-gold {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .player-card:hover, .player-card-gold:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.45);
+        }
+
+        .player-avatar, .player-avatar-gold {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .player-avatar img, .player-avatar-gold img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }
+
+.player-rank, .player-rank-gold {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffc107;
+    color: #000;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.player-rank-gold {
+    background-color: #ffeb3b;
+}
+
+.player-info, .player-info-gold {
+    width: 100%;
+}
+
+.player-name, .player-name-gold {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.player-name-gold {
+    font-size: 1.75rem;
+}
+
+.player-stats, .player-stats-gold {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+    text-align: left;
+    font-size: 0.875rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.player-stats span, .player-stats-gold span {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.leaderboard-entry {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leaderboard-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+.leaderboard-rank {
+    background-color: #6b7280;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.leaderboard-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.leaderboard-details {
+    flex-grow: 1;
+}
+
+.leaderboard-name {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.leaderboard-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.online-player {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.online-player:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.online-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.online-details {
+    flex-grow: 1;
+}
+
+.online-name {
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.online-level {
+    font-size: 0.75rem;
+    color: #a0aec0;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.glowing-text {
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.7), 0 0 5px rgba(0, 191, 255, 0.5);
+}
+
+.bg-grid-pattern {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0.05) 2px), repeating-linear-gradient(90deg, transparent, transparent 1px, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0.05) 2px);
+    background-size: 20px 20px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+}
+</style>
+</div>
