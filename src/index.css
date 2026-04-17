@@ -8,14 +8,14 @@
   * {
     box-sizing: border-box;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-[#050508] text-white font-sans overflow-x-hidden;
-    background-image: 
+    background-image:
       radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
   }
@@ -24,19 +24,23 @@
   ::-webkit-scrollbar {
     width: 6px;
   }
+
   ::-webkit-scrollbar-track {
     background: #0d0d1a;
   }
+
   ::-webkit-scrollbar-thumb {
     background: #3b82f6;
     border-radius: 3px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: #8b5cf6;
   }
 }
 
 @layer components {
+
   /* Glassmorphism card */
   .glass-card {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
@@ -79,15 +83,11 @@
 
   /* Button styles */
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-semibold 
-           transition-all duration-300 hover:from-blue-500 hover:to-violet-500 hover:-translate-y-0.5 
-           hover:shadow-lg hover:shadow-blue-500/25 active:scale-95;
+    @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-semibold transition-all duration-300 hover:from-blue-500 hover:to-violet-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/25 active:scale-95;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-white/5 border border-white/20 rounded-lg font-semibold 
-           transition-all duration-300 hover:bg-white/10 hover:border-white/40 hover:-translate-y-0.5 
-           active:scale-95;
+    @apply px-6 py-3 bg-white/5 border border-white/20 rounded-lg font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/40 hover:-translate-y-0.5 active:scale-95;
   }
 
   /* Online indicator */
@@ -98,18 +98,17 @@
 
   /* Nav link */
   .nav-link {
-    @apply text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium
-           relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] 
-           after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full;
+    @apply text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full;
   }
 }
 
 @layer utilities {
+
   /* 3D perspective utilities */
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
@@ -120,7 +119,7 @@
 
   /* Mesh gradient background */
   .mesh-bg {
-    background-image: 
+    background-image:
       radial-gradient(at 27% 37%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
       radial-gradient(at 97% 21%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
       radial-gradient(at 52% 99%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
@@ -131,22 +130,36 @@
 
   /* Grid pattern overlay */
   .grid-pattern {
-    background-image: 
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 }
 
 /* Custom animations not in Tailwind */
 @keyframes ping-green {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.5; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
 }
 
 @keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
 }
 
 /* Canvas (R3F) layering */
@@ -168,25 +181,25 @@ canvas {
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(180px, auto);
   }
-  
+
   .bento-card-large {
     grid-column: span 8;
     grid-row: span 2;
   }
-  
+
   .bento-card-tall {
     grid-column: span 4;
     grid-row: span 2;
   }
-  
+
   .bento-card-medium {
     grid-column: span 6;
   }
-  
+
   .bento-card-small {
     grid-column: span 3;
   }
-  
+
   .bento-card-hero {
     grid-column: span 12;
     grid-row: span 2;
@@ -211,12 +224,10 @@ canvas {
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.03),
-    transparent
-  );
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent);
   transform: skewX(-20deg);
   transition: all 0.7s ease;
   pointer-events: none;
@@ -248,4 +259,58 @@ canvas {
 
 .dock-item:hover .dock-tooltip {
   @apply opacity-100;
+}
+
+@keyframes glitch1 {
+
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  92% {
+    opacity: 0.8;
+    transform: translate(-2px, 1px);
+  }
+
+  94% {
+    transform: translate(2px, -1px);
+  }
+
+  96% {
+    transform: translate(-1px, 2px);
+  }
+}
+
+@keyframes glitch2 {
+
+  0%,
+  90%,
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  91% {
+    opacity: 0.6;
+    transform: translate(2px, -1px);
+  }
+
+  93% {
+    transform: translate(-2px, 1px);
+  }
+
+  95% {
+    transform: translate(1px, -2px);
+  }
+}
+
+.glitch-1 {
+  animation: glitch1 3s infinite;
+}
+
+.glitch-2 {
+  animation: glitch2 3s infinite;
 }

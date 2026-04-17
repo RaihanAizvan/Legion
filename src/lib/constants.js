@@ -1,10 +1,10 @@
 // All static data for the LEGION website
 
 export const serverInfo = {
-    ip: 'legionmc.space',
+    ip: 'play.legionmc.in',
     status: 'online',
     players: 21,
-    maxPlayers: 500,
+    maxPlayers: 100,
     uptime: '99%',
     lastRestart: '6 days ago',
 }

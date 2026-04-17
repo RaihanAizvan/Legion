@@ -1,6 +1,7 @@
 import ParticleField from '../components/three/ParticleField'
 import Hero from '../components/Hero'
 import Dashboard from '../components/Dashboard'
+import Welcome from '../components/Welcome'
 import Footer from '../components/Footer'
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
             </div>
 
             <Hero />
+            <Welcome />
             <Dashboard />
             <Footer />
         </main>
