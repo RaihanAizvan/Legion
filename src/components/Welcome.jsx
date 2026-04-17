@@ -4,7 +4,7 @@ import { serverInfo } from '../lib/constants'
 import { Copy } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-import ElectricBorder from './ElectricBorder'
+import BorderGlow from './BorderGlow'
 
 export default function Welcome() {
     const ref = useRef(null)
@@ -143,17 +143,21 @@ export default function Welcome() {
                         initial={{ opacity: 0, x: 40 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                     >
-                        <ElectricBorder
-                            color="#22d3ee" // Cyan highlight
-                            speed={0.6}
-                            chaos={0.12}
-                            thickness={2}
-                            style={{ borderRadius: 16 }}
+                        <BorderGlow
+                            edgeSensitivity={30}
+                            glowColor="188 86 53" /* Cyan-ish (H=188 S=86% L=53%) */
+                            backgroundColor="rgba(0, 0, 0, 0.6)"
+                            borderRadius={16}
+                            glowRadius={40}
+                            glowIntensity={1.2}
+                            coneSpread={25}
+                            animated={true}
+                            colors={['#22d3ee', '#8b5cf6', '#3b82f6']} /* Cyan, Violet, Blue */
                         >
                             <div className="
-                                bg-black/60 backdrop-blur-xl
+                                backdrop-blur-xl
                                 p-6 rounded-[inherit]
-                                relative
+                                relative h-full flex flex-col justify-center
                             ">
                                 {/* subtle glow line */}
                                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
@@ -198,7 +202,7 @@ export default function Welcome() {
                                     </div>
                                 </div>
                             </div>
-                        </ElectricBorder>
+                        </BorderGlow>
                     </motion.div>
 
                 </div>
