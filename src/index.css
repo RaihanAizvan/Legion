@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#050508] text-white font-sans overflow-x-hidden;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d0d1a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1;
+  }
+
+  /* Glow effects */
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+  }
+
+  .glow-text-blue {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.7), 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+
+  .glow-text-violet {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.7), 0 0 20px rgba(139, 92, 246, 0.4);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500;
+  }
+
+  .gradient-text-gold {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-2;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-semibold 
+           transition-all duration-300 hover:from-blue-500 hover:to-violet-500 hover:-translate-y-0.5 
+           hover:shadow-lg hover:shadow-blue-500/25 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/5 border border-white/20 rounded-lg font-semibold 
+           transition-all duration-300 hover:bg-white/10 hover:border-white/40 hover:-translate-y-0.5 
+           active:scale-95;
+  }
+
+  /* Online indicator */
+  .online-dot {
+    @apply w-2 h-2 bg-green-400 rounded-full;
+    animation: ping-green 2s ease-in-out infinite;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply text-white/70 hover:text-white transition-colors duration-200 text-sm font-medium
+           relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] 
+           after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  /* 3D perspective utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Mesh gradient background */
+  .mesh-bg {
+    background-image: 
+      radial-gradient(at 27% 37%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
+      radial-gradient(at 97% 21%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+      radial-gradient(at 33% 50%, rgba(6, 182, 212, 0.03) 0px, transparent 50%);
+  }
+
+  /* Grid pattern overlay */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* Custom animations not in Tailwind */
+@keyframes ping-green {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Canvas (R3F) layering */
+canvas {
+  display: block;
+}
+
+/* Bento Grid Utilities */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+  }
+  
+  .bento-card-large {
+    grid-column: span 8;
+    grid-row: span 2;
+  }
+  
+  .bento-card-tall {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+  
+  .bento-card-medium {
+    grid-column: span 6;
+  }
+  
+  .bento-card-small {
+    grid-column: span 3;
+  }
+  
+  .bento-card-hero {
+    grid-column: span 12;
+    grid-row: span 2;
+  }
+}
+
+.bento-card {
+  @apply relative p-6 overflow-hidden rounded-2xl glass-card transition-all duration-300;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: all 0.7s ease;
+  pointer-events: none;
+}
+
+.bento-card:hover::before {
+  left: 200%;
+}
+
+/* Floating Dock */
+.floating-dock-container {
+  @apply fixed bottom-6 left-1/2 -translate-x-1/2 z-50;
+  perspective: 1000px;
+}
+
+.floating-dock {
+  @apply flex items-center gap-4 px-6 py-4 rounded-full bg-[#050508]/80 backdrop-blur-2xl border border-white/10;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+}
+
+.dock-item {
+  @apply flex flex-col items-center justify-center relative cursor-pointer text-white/50 hover:text-white transition-colors;
+}
+
+.dock-tooltip {
+  @apply absolute -top-10 px-3 py-1.5 rounded-lg bg-black border border-white/10 text-xs font-semibold tracking-wider text-white whitespace-nowrap opacity-0 transition-opacity pointer-events-none;
+}
+
+.dock-item:hover .dock-tooltip {
+  @apply opacity-100;
+}
