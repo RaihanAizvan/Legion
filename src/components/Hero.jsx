@@ -69,14 +69,7 @@ export default function Hero() {
 
                                     <TextPressure
                                         text="LEGION"
-                                        flex={false}
                                         stroke={true}
-                                        width={false}
-                                        weight={true}
-                                        italic={false}
-                                        alpha={false}
-                                        textColor="#ffffff"
-                                        strokeColor="rgba(0, 74, 201, 0.4)"
                                         minFontSize={80}
                                         className="tracking-tight"
                                     />
