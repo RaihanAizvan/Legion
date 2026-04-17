@@ -66,12 +66,19 @@ export default function Hero() {
                         >
                             <div className="w-full flex justify-center md:justify-start">
                                 <div className="relative w-full max-w-[1200px] h-[200px] sm:h-[260px] md:h-[360px]">
-
                                     <TextPressure
                                         text="LEGION"
-                                        stroke={true}
+                                        fontFamily="Compressa VF"
+                                        fontUrl="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2"
+                                        flex={true}
+                                        stroke
+                                        width={false}
+                                        weight
+                                        italic={true}
+                                        alpha={false}
+                                        textColor="#ffffff"
+                                        strokeColor="rgba(0, 74, 201, 0.4)"
                                         minFontSize={80}
-                                        className="tracking-tight"
                                     />
 
                                 </div>
