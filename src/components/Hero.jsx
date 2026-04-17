@@ -57,8 +57,8 @@ export default function Hero() {
                 >
                     <h1 className="font-display font-black leading-[0.85] tracking-tighter mix-blend-screen">
                         <span
-                            className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/20"
-                            style={{ fontSize: 'clamp(5rem, 15vw, 15rem)' }}
+                            className="block text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/10 drop-shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+                            style={{ fontSize: 'clamp(7rem, 26vw, 26rem)' }}
                         >
                             LEGION
                         </span>
@@ -72,41 +72,66 @@ export default function Hero() {
                 </motion.div>
             </div>
 
+            <div className="absolute -top-10 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
             {/* Floating Action Widget - Bottom Left */}
+
             <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute bottom-32 left-4 md:left-12 z-20"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="absolute bottom-32 left-1/2 -translate-x-1/2 z-20 w-full max-w-xl px-6"
             >
-                <div className="glass-card p-5 border-l-2 border-l-cyan-400 bg-black/40">
-                    <div className="flex flex-col gap-4">
-                        <div>
-                            <p className="text-white/50 text-xs font-semibold tracking-wider uppercase mb-1">Server IP</p>
-                            <div className="flex items-center gap-3">
-                                <span className="font-display text-xl md:text-2xl font-bold tracking-widest text-white">
+                <div className="relative group">
+                    {/* Decorative technical corners/borders */}
+                    <div className="absolute -top-2 -left-2 w-4 h-4 border-t-2 border-l-2 border-cyan-500/50" />
+                    <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-cyan-500/50" />
+
+                    <div className="glass-card bg-[#050508]/60 backdrop-blur-2xl border border-white/5 p-1 flex flex-col md:flex-row items-stretch gap-1 overflow-hidden">
+                        {/* Server IP section */}
+                        <div className="flex-1 bg-white/5 p-4 flex items-center justify-between border border-white/5">
+                            <div className="flex flex-col">
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400/60 font-bold mb-1">
+                                    Network Node
+                                </span>
+                                <span className="font-mono text-white text-lg tracking-widest flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
                                     <TypingText text={serverInfo.ip} />
                                 </span>
-                                <button
-                                    onClick={copyIP}
-                                    className="p-1.5 rounded-md hover:bg-white/10 text-white/50 hover:text-cyan-400 transition-colors"
-                                >
-                                    {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} />}
-                                </button>
                             </div>
+
+                            <button
+                                onClick={copyIP}
+                                className="group/copy relative p-2.5 rounded hover:bg-cyan-500/10 transition-all border border-transparent hover:border-cyan-500/20 active:scale-90"
+                            >
+                                {copied ? (
+                                    <Check size={18} className="text-green-400" />
+                                ) : (
+                                    <Copy size={18} className="text-white/40 group-hover/copy:text-cyan-400" />
+                                )}
+                            </button>
                         </div>
 
-                        <div className="flex items-center gap-4">
-                            <a href="#store" className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-2.5 rounded hover:scale-105 active:scale-95 flex items-center gap-2 font-bold transition-all text-sm">
-                                <Play size={16} fill="currentColor" />
-                                Play Now
-                            </a>
-                            <div className="flex items-center gap-2 text-xs font-medium bg-green-500/10 text-green-400 px-3 py-1.5 rounded-full border border-green-500/20">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                                {serverInfo.players} Online
+                        {/* Status & Play section */}
+                        <div className="w-full md:w-auto bg-cyan-500 p-4 flex md:flex-col items-center justify-between md:justify-center gap-4 cursor-pointer group/play transition-colors hover:bg-cyan-400 active:bg-cyan-600" onClick={() => window.location.href = '#store'}>
+                            <div className="flex flex-col items-start md:items-center">
+                                <span className="text-[10px] uppercase tracking-wider text-black/60 font-black">
+                                    Play Now
+                                </span>
+                                <div className="flex items-center gap-1.5 mt-0.5">
+                                    <span className="text-xs font-black text-black">
+                                        {serverInfo.players}
+                                    </span>
+                                    <span className="text-[10px] font-black text-black/40">
+                                        ONLINE
+                                    </span>
+                                </div>
                             </div>
+                            <Play size={20} className="text-black fill-black md:mt-1 group-hover/play:scale-110 transition-transform" />
                         </div>
                     </div>
+
+                    {/* Subtle underline scanline effect */}
+                    <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-30 shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
                 </div>
             </motion.div>
 
