@@ -1,16 +1,40 @@
-# React + Vite
+# LEGION Minecraft Server Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance web application for the LEGION Minecraft community, refactored from legacy Express/EJS to a state-of-the-art React SPA.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
+- **Frontend**: React 18 (Vite)
+- **Styling**: Tailwind CSS v3 (Custom Cyberpunk Design System)
+- **Animations**: Framer Motion (Spring physics & staggering)
+- **3D Graphics**: React Three Fiber + Drei (GLSL Shaders & Particle Systems)
+- **Icons**: Lucide React
+- **Backend**: Express (Node.js)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
+- **Bento Grid Layout**: Custom CSS grid-based dashboard modules with dynamic heights.
+- **Floating Dock**: Interactive macOS-inspired navigation experience with spring-scaling.
+- **Immersive 3D Background**: Global particle fields with real-time scroll parallax and mouse-focus interactivity.
+- **Glassmorphism UI**: High-end frosted-glass aesthetic with border glows and gradient overlays.
+- **Mobile First**: Fully responsive design with specific optimizations for small-screen carousels and typography.
 
-## React Compiler
+## 📦 Installation & Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Development
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Production Build
+1. Build the frontend:
+   ```bash
+   npm run build
+   ```
+2. Start the production server:
+   ```bash
+   npm start
+   ```
