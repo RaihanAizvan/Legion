@@ -98,53 +98,75 @@ export default function Hero() {
             {/* Floating Action Widget - Bottom Left */}
 
             <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="absolute bottom-32 left-0 -translate-x-1/2 z-20 w-full max-w-2xl px-4"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="mt-8 px-4 sm:px-12 w-full grid place-items-center md:flex md:justify-start"
             >
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 w-full sm:w-auto max-w-full sm:max-w-md">
-                    {/* IP */}
-                    <div className="flex items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
+                <div className="
+        relative w-fit max-w-full sm:max-w-md
+        p-[1px] rounded-xl
+        bg-gradient-to-r from-cyan-400/40 to-blue-500/30
+    ">
 
-                        {/* Label */}
-                        <span className="text-white/40 text-[10px] sm:text-xs uppercase tracking-widest">
-                            Server
-                        </span>
+                    <div className="
+            flex items-center gap-2 sm:gap-3
+            px-3 sm:px-5 py-2.5 sm:py-3
 
-                        {/* IP + Copy */}
-                        <div className="flex items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
+            bg-black/70 backdrop-blur-xl
+            rounded-xl
 
-                            <span className="font-mono text-white text-sm sm:text-lg tracking-wider break-all sm:break-normal">
+            shadow-[0_6px_25px_rgba(0,0,0,0.7)]
+        ">
+
+                        {/* LEFT */}
+                        <div className="flex items-center gap-2 min-w-0">
+
+                            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse shrink-0" />
+
+                            <span className="
+                    font-mono text-white
+                    text-xs sm:text-sm
+                    tracking-wide
+                    truncate
+                ">
                                 <TypingText text={serverInfo.ip} />
                             </span>
 
                             <button
                                 onClick={copyIP}
-                                className="p-2 rounded-md hover:bg-white/10 transition shrink-0"
+                                className="
+                        ml-1 flex items-center justify-center
+                        w-7 h-7
+
+                        bg-white/5 hover:bg-white/10
+                        border border-white/10
+                        rounded-md
+
+                        transition active:scale-95 shrink-0
+                    "
                             >
                                 {copied ? (
-                                    <Check size={16} className="text-green-400" />
+                                    <Check size={14} className="text-green-400" />
                                 ) : (
-                                    <Copy size={16} className="text-white/60" />
+                                    <Copy size={14} className="text-white/60" />
                                 )}
                             </button>
-
                         </div>
 
-                    </div>
-                    {/* Actions */}
-                    <div className="flex items-center gap-3">
-                        <a
-                            href="#store"
-                            className="bg-white text-black px-5 py-2 rounded-md font-semibold text-sm hover:scale-105 active:scale-95 transition"
-                        >
-                            Play
-                        </a>
+                        {/* RIGHT */}
+                        <div className="flex items-center gap-2 shrink-0">
 
-                        <div className="text-green-400 text-xs font-medium flex items-center gap-2">
-                            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                            {serverInfo.players}
+                            <div className="
+                    flex items-center gap-1.5
+                    text-[10px] font-medium text-green-400
+                    bg-green-400/10 px-2 py-1 rounded-md
+                    border border-green-400/20
+                ">
+                                <span className="w-1.5 h-1.5 bg-green-400 rounded-full" />
+                                {serverInfo.players} / {serverInfo.maxPlayers}
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -152,15 +174,48 @@ export default function Hero() {
 
             {/* Scroll indicator - Bottom Right */}
             <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                className="absolute bottom-32 right-8 md:right-12 z-20 flex flex-col items-center gap-2 text-white/30"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+                className="absolute bottom-20 right-6 md:right-12 z-20 flex flex-col items-center"
             >
-                <span className="text-[10px] tracking-[0.2em] uppercase origin-left rotate-90 translate-y-10 whitespace-nowrap hidden md:block">
-                    Scroll Down
-                </span>
-                <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent mt-12 md:mt-16" />
+                {/* Text */}
+                <motion.span
+                    animate={{ opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="text-[10px] tracking-[0.3em] uppercase rotate-90 translate-y-10 hidden md:block text-white/50"
+                >
+                    Scroll
+                </motion.span>
+
+                {/* Scroll Indicator Container */}
+                <div className="relative flex flex-col items-center mt-10">
+
+                    {/* Glow Pulse */}
+                    <motion.div
+                        animate={{ scale: [1, 1.8, 1], opacity: [0.3, 0, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute w-6 h-10 rounded-full border border-white/20"
+                    />
+
+                    {/* Mouse Shape */}
+                    <div className="w-6 h-10 rounded-full border border-white/40 flex justify-center items-start p-1 backdrop-blur-sm">
+
+                        {/* Scroll Wheel */}
+                        <motion.div
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="w-1 h-2 bg-white rounded-full"
+                        />
+                    </div>
+
+                    {/* Trail Line */}
+                    <motion.div
+                        animate={{ height: [0, 60, 0], opacity: [0.2, 0.6, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-px bg-gradient-to-b from-white/40 to-transparent mt-4"
+                    />
+                </div>
             </motion.div>
         </section>
     )
