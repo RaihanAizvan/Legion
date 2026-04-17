@@ -7,8 +7,9 @@ const dist = (a, b) => {
 };
 
 const getAttr = (distance, maxDist, minVal, maxVal) => {
-    const normalized = Math.min(Math.max(1 - distance / maxDist, 0), 1);
-    return minVal + (maxVal - minVal) * normalized;
+    const t = Math.min(Math.max(1 - distance / maxDist, 0), 1);
+    const eased = Math.pow(t, 2.2);
+    return minVal + (maxVal - minVal) * eased;
 };
 
 const debounce = (func, delay) => {
@@ -118,13 +119,12 @@ const TextPressure = ({
 
                     const d = dist(mouseRef.current, charCenter);
 
-                    // Pressure effects via transforms
-                    const scaleFactor = getAttr(d, maxDist, 1, 1.4);
-                    const stretchX = getAttr(d, maxDist, 1, 1.3);
-                    const translateY = getAttr(d, maxDist, 0, -20);
-                    const skewX = getAttr(d, maxDist, 0, 10) * (mouseRef.current.x < charCenter.x ? 1 : -1);
+                    const stretchX = getAttr(d, maxDist, 1, 1.6);
+                    const squashY = getAttr(d, maxDist, 1, 0.85);
+                    const translateY = getAttr(d, maxDist, 0, -40);
+                    const skewX = getAttr(d, maxDist, 0, 20) * (mouseRef.current.x > charCenter.x ? 1 : -1);
 
-                    const transform = `translateY(${translateY}px) scaleX(${stretchX}) skewX(${skewX}deg)`;
+                    const transform = `translateY(${translateY.toFixed(2)}px) scaleX(${stretchX.toFixed(2)}) scaleY(${squashY.toFixed(2)}) skewX(${skewX.toFixed(2)}deg)`;
 
                     if (span.style.transform !== transform) {
                         span.style.transform = transform;
