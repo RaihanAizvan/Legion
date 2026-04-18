@@ -37,9 +37,9 @@ export default function Navbar() {
                         <Link to="/" className="group relative flex items-center">
 
                             <span className="
-                                font-[LegionCustom]
+                                rubik-doodle-shadow-regular
                                 text-xl sm:text-2xl
-                                tracking-[0.25em]
+                                tracking-wider
                                 text-white
                                 transition-all duration-300
                                 group-hover:text-cyan-400

@@ -74,7 +74,7 @@ export default function Hero() {
                                         stroke
                                         width={false}
                                         weight
-                                        italic={true}
+                                        italic={false}
                                         alpha={false}
                                         textColor="#ffffff"
                                         strokeColor="rgba(0, 74, 201, 0.4)"

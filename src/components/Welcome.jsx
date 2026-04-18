@@ -42,8 +42,8 @@ export default function Welcome() {
                     <div className="flex items-center gap-5">
 
                         <span className="
-                            font-[LegionCustom]
-                            text-lg tracking-[0.25em]
+                            rubik-doodle-shadow-regular
+                            text-xl tracking-wider
                             text-white
                         ">
                             LEGION
