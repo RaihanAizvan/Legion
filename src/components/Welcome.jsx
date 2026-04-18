@@ -42,8 +42,8 @@ export default function Welcome() {
                     <div className="flex items-center gap-5">
 
                         <span className="
-                            rubik-doodle-shadow-regular
-                            text-xl tracking-wider
+                            font-[LegionCustom]
+                            text-lg tracking-[0.25em]
                             text-white
                         ">
                             LEGION
@@ -145,33 +145,44 @@ export default function Welcome() {
                     >
                         <BorderGlow
                             edgeSensitivity={30}
-                            glowColor="188 86 53" /* Cyan-ish (H=188 S=86% L=53%) */
-                            backgroundColor="rgba(0, 0, 0, 0.6)"
-                            borderRadius={16}
+                            glowColor="40 80 80"
+                            backgroundColor="#120F17"
+                            borderRadius={28}
                             glowRadius={40}
-                            glowIntensity={1.2}
+                            glowIntensity={1.0}
                             coneSpread={25}
-                            animated={true}
-                            colors={['#22d3ee', '#8b5cf6', '#3b82f6']} /* Cyan, Violet, Blue */
+                            animated={false}
+                            colors={['#c084fc', '#f472b6', '#38bdf8']}
+                            className="w-full h-full"
                         >
-                            <div className="
-                                backdrop-blur-xl
-                                p-6 rounded-[inherit]
-                                relative h-full flex flex-col justify-center
-                            ">
-                                {/* subtle glow line */}
-                                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+                            <div className="relative p-6 h-full flex flex-col justify-center">
 
-                                {/* IP */}
+                                {/* HEADER */}
+                                <div className="mb-5 flex items-center justify-between">
+                                    <span className="text-white/40 text-xs tracking-widest">
+                                        SERVER INTERFACE
+                                    </span>
+
+                                    <span className="flex items-center gap-2 text-green-400 text-xs">
+                                        <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                                        ONLINE
+                                    </span>
+                                </div>
+
+                                {/* IP BLOCK */}
                                 <div className="mb-6">
-                                    <p className="text-white/40 text-xs mb-1">SERVER ADDRESS</p>
+                                    <p className="text-white/40 text-xs mb-1 tracking-wider">
+                                        ADDRESS
+                                    </p>
 
                                     <div className="
                                         flex items-center justify-between
                                         bg-black/40 border border-white/10
                                         px-4 py-3 rounded-md
+                                        hover:border-cyan-400/40
+                                        transition
                                     ">
-                                        <span className="font-mono text-white text-base">
+                                        <span className="font-mono text-white text-base tracking-wide">
                                             {serverInfo.ip}
                                         </span>
 
@@ -184,27 +195,41 @@ export default function Welcome() {
                                     </div>
                                 </div>
 
-                                {/* stats */}
+                                {/* STATS */}
                                 <div className="grid grid-cols-3 gap-4 text-center text-sm">
+
                                     <div>
-                                        <p className="text-white/40 text-xs mb-1">Players</p>
-                                        <p className="text-white text-lg">{serverInfo.players}</p>
+                                        <p className="text-white/40 text-xs mb-1 tracking-wide">
+                                            PLAYERS
+                                        </p>
+                                        <p className="text-white text-lg font-semibold">
+                                            {serverInfo.players}
+                                        </p>
                                     </div>
 
                                     <div>
-                                        <p className="text-white/40 text-xs mb-1">Capacity</p>
-                                        <p className="text-white text-lg">{serverInfo.maxPlayers}</p>
+                                        <p className="text-white/40 text-xs mb-1 tracking-wide">
+                                            CAPACITY
+                                        </p>
+                                        <p className="text-white text-lg font-semibold">
+                                            {serverInfo.maxPlayers}
+                                        </p>
                                     </div>
 
                                     <div>
-                                        <p className="text-white/40 text-xs mb-1">Uptime</p>
-                                        <p className="text-white text-lg">{serverInfo.uptime}</p>
+                                        <p className="text-white/40 text-xs mb-1 tracking-wide">
+                                            UPTIME
+                                        </p>
+                                        <p className="text-white text-lg font-semibold">
+                                            {serverInfo.uptime}
+                                        </p>
                                     </div>
+
                                 </div>
+
                             </div>
                         </BorderGlow>
                     </motion.div>
-
                 </div>
 
             </div>
