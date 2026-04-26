@@ -30,10 +30,10 @@ export default function Welcome() {
                 mouseInfluence={0.1}
                 noiseAmount={0.1}
                 distortion={0.05}
-                className="opacity-50" // adding a bit of opacity so it's not too overwhelming
+                className="opacity-100 z-0"
             />
 
-            <div className="relative max-w-7xl mx-auto px-4">
+            <div className="relative z-10 max-w-7xl mx-auto px-4">
 
                 {/* 🔥 TOP SYSTEM STRIP */}
                 <motion.div
