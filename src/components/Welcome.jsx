@@ -5,7 +5,6 @@ import { Copy } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 import BorderGlow from './BorderGlow'
-import LightRays from './LightRays'
 
 export default function Welcome() {
     const ref = useRef(null)
@@ -18,20 +17,6 @@ export default function Welcome() {
 
     return (
         <section ref={ref} className="relative py-28 overflow-hidden">
-
-            {/* 🔥 LightRays Background */}
-            <LightRays
-                raysOrigin="top-center"
-                raysColor="#00ffff"
-                raysSpeed={1.5}
-                lightSpread={0.8}
-                rayLength={1.2}
-                followMouse={true}
-                mouseInfluence={0.1}
-                noiseAmount={0.1}
-                distortion={0.05}
-                className="opacity-100 z-0"
-            />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4">
 
