@@ -1,73 +1,50 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Map, Gamepad2, Crosshair, Crown, TrendingUp, Moon } from 'lucide-react'
+import MagicBento from './MagicBento'
 
 const NEW_FEATURES = [
     {
-        id: 'skyblock',
-        icon: Map,
+        label: 'Main Experience',
         title: 'Core SkyBlock',
         description: 'Our main experience. Build your island, grind skills, unlock custom enchants, explore dungeons, complete missions, and rise through ranks in the ultimate sky survival world.',
-        gradient: 'from-[#14b9ff]/20 to-[#38bdf8]/5 border-[#14b9ff]/30',
-        color: 'text-[#14b9ff]',
-        bgGlow: 'bg-[#14b9ff]/20',
-        span: 'md:col-span-2 md:row-span-2 min-h-[300px] md:min-h-[400px]',
-        size: 'large'
+        color: 'rgba(14, 165, 233, 0.05)', // Cyan tint
+        image: 'https://images.unsplash.com/photo-1627856013091-fed6e4e09ba9?q=80&w=1200&auto=format&fit=crop', // Stunning floating island / sci-fi landscape
     },
     {
-        id: 'arcade',
-        icon: Gamepad2,
+        label: 'Minigames',
         title: 'Arcade Minigames',
         description: 'A hub of fast-paced fun. Jump between classic and custom mini-games with friends. Earn coins, climb leaderboards, and unlock exclusive arcade rewards.',
-        gradient: 'from-violet-500/20 to-purple-500/5 border-violet-500/30',
-        color: 'text-violet-400',
-        bgGlow: 'bg-violet-500/20',
-        span: 'col-span-1 row-span-1',
-        size: 'medium'
+        color: 'rgba(139, 92, 246, 0.05)', // Violet tint
     },
     {
-        id: 'bedwars',
-        icon: Crosshair,
+        label: 'Competitive',
         title: 'BedWars',
         description: "Protect your bed while destroying your enemies'. Team up, upgrade your base, and be the last island standing in our custom BedWars arena with ranked seasons.",
-        gradient: 'from-rose-500/20 to-red-500/5 border-rose-500/30',
-        color: 'text-rose-400',
-        bgGlow: 'bg-rose-500/20',
-        span: 'col-span-1 row-span-1',
-        size: 'medium'
+        color: 'rgba(244, 63, 94, 0.05)', // Rose tint
     },
     {
-        id: 'ranks',
-        icon: Crown,
+        label: 'Progression',
         title: 'Ranks & Prestige',
         description: 'All ranks are earned by completing in-game requirements — not purchasable. Show off your true dedication through prestige.',
-        gradient: 'from-amber-500/20 to-yellow-500/5 border-amber-500/30',
-        color: 'text-amber-400',
-        bgGlow: 'bg-amber-500/20',
-        span: 'col-span-1 row-span-1',
-        size: 'small'
+        color: 'rgba(245, 158, 11, 0.05)', // Amber tint
     },
     {
-        id: 'leveling',
-        icon: TrendingUp,
+        label: 'Rewards',
         title: 'Leveling System',
         description: 'Gain XP by playing, completing quests, winning games, and participating in events. Each level unlocks new cosmetics and titles.',
-        gradient: 'from-green-500/20 to-emerald-500/5 border-green-500/30',
-        color: 'text-green-400',
-        bgGlow: 'bg-green-500/20',
-        span: 'col-span-1 row-span-1',
-        size: 'small'
+        color: 'rgba(16, 185, 129, 0.05)', // Emerald tint
     },
     {
-        id: 'afk',
-        icon: Moon,
+        label: 'Exploration',
+        title: 'Custom Worlds',
+        description: 'Explore completely custom biomes and terrain generation. Find unique resources, discover hidden structures, and build natively in a world like no other.',
+        color: 'rgba(236, 72, 153, 0.05)', // Pink tint
+    },
+    {
+        label: 'Passive',
         title: 'AFK Zone',
         description: "Step away from the keyboard and still earn! Our AFK Zone rewards your time — get various items completely free while you're away.",
-        gradient: 'from-indigo-500/20 to-blue-500/5 border-indigo-500/30',
-        color: 'text-indigo-400',
-        bgGlow: 'bg-indigo-500/20',
-        span: 'col-span-1 row-span-1',
-        size: 'small'
+        color: 'rgba(99, 102, 241, 0.05)', // Indigo tint
     }
 ]
 
@@ -75,33 +52,12 @@ export default function UniqueFeatures() {
     const ref = useRef(null)
     const inView = useInView(ref, { once: true, margin: '-10% 0px -10% 0px' })
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15
-            }
-        }
-    }
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { type: "spring", stiffness: 100, damping: 20 }
-        }
-    }
-
     return (
         <section ref={ref} className="relative py-24 md:py-32 bg-[#050508] overflow-hidden">
             <div className="absolute top-0 left-0 right-0 section-divider z-20" />
 
             {/* Ambient Background Glows */}
-            <div className="absolute top-[-10%] left-[-10%] w-1/2 h-1/2 bg-cyan-900/20 blur-[120px] rounded-full point-events-none mix-blend-screen" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-1/2 h-1/2 bg-violet-900/20 blur-[120px] rounded-full point-events-none mix-blend-screen" />
+            <div className="absolute top-[-10%] left-[20%] w-[800px] h-[800px] bg-cyan-900/20 blur-[120px] rounded-full point-events-none mix-blend-screen" />
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px] relative z-10">
 
@@ -124,53 +80,26 @@ export default function UniqueFeatures() {
                     </p>
                 </motion.div>
 
-                {/* Bento Box Grid */}
+                {/* Magic Bento Integration */}
                 <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={inView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 auto-rows-fr"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+                    className="w-full relative lg:-mx-12 xl:-mx-24"
                 >
-                    {NEW_FEATURES.map((feature) => {
-                        const Icon = feature.icon;
-                        const isLarge = feature.size === 'large';
-
-                        return (
-                            <motion.div
-                                key={feature.id}
-                                variants={itemVariants}
-                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                                className={`relative group overflow-hidden rounded-3xl border bg-black/40 backdrop-blur-md p-6 md:p-8 flex flex-col ${feature.span} ${feature.gradient}`}
-                            >
-                                {/* Inner Hover Lighting */}
-                                <div className={`absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[60px] opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none ${feature.bgGlow}`} />
-                                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
-
-                                <div className={`flex items-start gap-4 md:gap-6 ${isLarge ? 'flex-col' : 'flex-col sm:flex-row md:flex-col'} h-full relative z-10`}>
-
-                                    {/* Icon Container */}
-                                    <div className={`p-4 rounded-2xl bg-white/5 border border-white/10 ${feature.color} shrink-0 group-hover:scale-110 group-hover:bg-white/10 transition-all duration-300 shadow-2xl`}>
-                                        <Icon size={isLarge ? 48 : 32} strokeWidth={isLarge ? 1.5 : 2} />
-                                    </div>
-
-                                    {/* Text Content */}
-                                    <div className={`flex flex-col ${isLarge ? 'mt-auto pt-8' : ''}`}>
-                                        <h3 className={`font-display font-bold text-white tracking-tight mb-3 transition-colors duration-300 group-hover:${feature.color} ${isLarge ? 'text-3xl md:text-5xl' : 'text-xl md:text-2xl'}`}>
-                                            {feature.title}
-                                        </h3>
-                                        <p className={`text-white/60 leading-relaxed ${isLarge ? 'text-lg md:text-xl max-w-2xl' : 'text-sm md:text-base'}`}>
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Bottom Glowing Edge */}
-                                <div className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
-                                    <div className={`w-full h-full ${feature.bgGlow.replace('bg-', 'bg-')} blur-sm`} />
-                                </div>
-                            </motion.div>
-                        )
-                    })}
+                    <MagicBento
+                        items={NEW_FEATURES}
+                        textAutoHide={false}
+                        enableStars={true}
+                        enableSpotlight={true}
+                        enableBorderGlow={true}
+                        enableTilt={true}
+                        enableMagnetism={true}
+                        clickEffect={true}
+                        spotlightRadius={350}
+                        particleCount={15}
+                        glowColor="34, 211, 238" // Cyan Glow
+                    />
                 </motion.div>
 
             </div>
