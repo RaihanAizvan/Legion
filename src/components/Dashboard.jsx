@@ -153,8 +153,9 @@ export default function Dashboard() {
                             </div>
                             <div className="space-y-4">
                                 <StatusWidget label="Core Skyblock" value="Nominal" health={99} icon={Globe} color="text-cyan-400" />
-                                <StatusWidget label="Arena Sync" value="94%" health={94} icon={Zap} color="text-purple-400" />
-                                <StatusWidget label="Database" value="14ms" health={85} icon={Database} color="text-blue-400" />
+                                <StatusWidget label="BedWars Arena" value="Synced" health={96} icon={Radio} color="text-rose-400" />
+                                <StatusWidget label="Survival World" value="98.2%" health={98} icon={Database} color="text-emerald-400" />
+                                <StatusWidget label="Arcade Hub" value="Low Latency" health={100} icon={Zap} color="text-purple-400" />
                             </div>
                             <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
                                 <div className="text-[10px] font-black text-white/30 uppercase tracking-widest whitespace-nowrap">Uptime Tracking</div>
