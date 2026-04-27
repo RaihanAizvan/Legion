@@ -75,7 +75,7 @@ function RewardCard({ item, index }) {
 
 export default function AfkZone() {
     return (
-        <section className="relative py-32 bg-[#050508] overflow-hidden">
+        <section className="relative py-32 overflow-hidden">
             {/* Immersive Background */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.02),transparent)] pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[500px] bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none opacity-50" />
