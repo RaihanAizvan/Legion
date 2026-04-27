@@ -5,6 +5,7 @@ import Welcome from '../components/Welcome'
 import Footer from '../components/Footer'
 import UniqueFeatures from '../components/UniqueFeatures'
 import TopPlayers from '../components/TopPlayers'
+import Ranks from '../components/Ranks'
 import Navbar from '../components/Navbar'
 export default function HomePage() {
     return (
@@ -28,6 +29,7 @@ export default function HomePage() {
             <Welcome />
             <UniqueFeatures />
             <TopPlayers />
+            <Ranks />
             <Dashboard />
             <Footer />
         </main>
