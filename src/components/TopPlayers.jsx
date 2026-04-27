@@ -1,210 +1,203 @@
-import { useRef, useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Trophy, Swords, Timer, Zap, Award, Users, ChevronRight, Target, ShieldCheck } from 'lucide-react'
+import { useRef } from 'react'
+import { motion } from 'framer-motion'
+import { Trophy, Swords, Zap, Timer, Award, User, ChevronRight, BarChart2 } from 'lucide-react'
 import { topPlayers, leaderboard } from '../lib/constants'
 
-// Combine topPlayers and leaderboard for a single list
-const allRankings = [...topPlayers, ...leaderboard].sort((a, b) => a.rank - b.rank)
+const ALL_PLAYERS = [...topPlayers, ...leaderboard].sort((a, b) => a.rank - b.rank)
 
-function StatBlock({ label, value, icon: Icon, color, delay }) {
+function CompactPlayerCard({ player, index }) {
+    const isTop3 = player.rank <= 3
+    const colors = {
+        1: 'from-amber-400 to-yellow-600',
+        2: 'from-slate-300 to-gray-500',
+        3: 'from-orange-500 to-amber-700'
+    }
+
     return (
         <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay }}
-            className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all group/stat"
-        >
-            <div className={`p-3 rounded-xl bg-white/5 ${color} group-hover/stat:scale-110 transition-transform`}>
-                <Icon size={20} />
-            </div>
-            <div>
-                <div className="text-[10px] uppercase font-black text-white/30 tracking-widest leading-none mb-1">{label}</div>
-                <div className="text-xl font-black text-white tracking-tight">{value}</div>
-            </div>
-        </motion.div>
-    )
-}
-
-function PlayerDetail({ player }) {
-    if (!player) return null
-
-    return (
-        <div className="w-full h-full flex flex-col items-center lg:items-start">
-            <div className="relative w-full aspect-square max-w-[320px] lg:max-w-none lg:h-[400px] mb-8 group/avatar">
-                {/* Background Decor */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 rounded-[3rem] blur-3xl group-hover/avatar:opacity-40 transition-opacity" />
-
-                {/* Main Avatar */}
-                <motion.div
-                    key={player.rank}
-                    initial={{ scale: 0.8, opacity: 0, rotateY: -20 }}
-                    animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-                    transition={{ type: "spring", stiffness: 100 }}
-                    className="relative w-full h-full rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl backdrop-blur-sm"
-                >
-                    <img
-                        src={player.avatar.replace('100', '500')} // Try to get higher res
-                        alt={player.name}
-                        className="w-full h-full object-cover"
-                    />
-
-                    {/* Rank Overlay */}
-                    <div className="absolute top-6 left-6 flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-2xl font-black text-cyan-400">
-                            {player.rank}
-                        </div>
-                        <div className="px-4 py-2 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-                            Current Standing
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Floating Badges */}
-                <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                    className="absolute -right-6 top-1/4 p-4 rounded-2xl bg-black/80 border border-white/10 shadow-2xl backdrop-blur-xl z-20"
-                >
-                    <Trophy className="text-yellow-500 mb-1" size={24} />
-                    <div className="text-[10px] font-black text-white/50 uppercase">Tier</div>
-                    <div className="text-xs font-bold text-white">LEGENDARY</div>
-                </motion.div>
-            </div>
-
-            {/* Info Section */}
-            <motion.div
-                key={player.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="w-full"
-            >
-                <h2 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-2">
-                    {player.name}
-                </h2>
-                <div className="flex flex-wrap items-center gap-4 mb-8">
-                    <span className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-black uppercase tracking-widest">
-                        {player.team || player.clan || 'Solo Agent'}
-                    </span>
-                    <span className="h-1 w-8 bg-white/10" />
-                    <span className="text-white/40 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
-                        <Target size={14} /> Prestige Level {player.rank === 1 ? 'MAX' : '9'}
-                    </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <StatBlock label="Combat Kills" value={player.kills} icon={Swords} color="text-rose-400" delay={0.1} />
-                    <StatBlock label="Progression" value={`Lv. ${player.level}`} icon={Zap} color="text-purple-400" delay={0.2} />
-                    <StatBlock label="Survival Time" value={player.playTime || '---'} icon={Timer} color="text-cyan-400" delay={0.3} />
-                    <StatBlock label="Win Ratio" value={player.winRate || '---'} icon={Award} color="text-emerald-400" delay={0.4} />
-                </div>
-            </motion.div>
-        </div>
-    )
-}
-
-function RankingItem({ player, isSelected, onClick, index }) {
-    return (
-        <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            onClick={onClick}
-            className={`group relative flex items-center gap-4 p-4 rounded-3xl cursor-pointer transition-all duration-300 ${isSelected ? 'bg-white/10 shadow-2xl scale-105' : 'hover:bg-white/[0.03]'}`}
+            whileHover={{ y: -5, scale: 1.02 }}
+            className="relative group cursor-pointer"
         >
-            {isSelected && (
-                <motion.div
-                    layoutId="active-bg"
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent rounded-3xl"
-                />
-            )}
+            <div className={`p-[1px] rounded-3xl bg-gradient-to-br ${isTop3 ? colors[player.rank] : 'from-white/10 to-transparent'} group-hover:from-cyan-500 group-hover:to-purple-500 transition-all duration-500`}>
+                <div className="bg-[#0A0A0F] rounded-[1.7rem] p-5 h-full relative overflow-hidden">
 
-            <div className={`w-12 h-12 flex items-center justify-center font-black text-xl italic transition-colors ${isSelected ? 'text-cyan-400' : 'text-white/10 group-hover:text-white/30'}`}>
-                {player.rank.toString().padStart(2, '0')}
-            </div>
+                    {/* Background Shine */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-[40px] -mr-12 -mt-12 group-hover:bg-cyan-500/10 transition-colors" />
 
-            <div className="relative">
-                <img src={player.avatar} alt={player.name} className={`w-12 h-12 rounded-2xl transition-all duration-500 ${isSelected ? 'rotate-[-10deg] scale-110 shadow-xl' : 'grayscale group-hover:grayscale-0'}`} />
-                {isSelected && <div className="absolute -top-1 -right-1 w-4 h-4 bg-cyan-500 rounded-full border-2 border-[#050508] animate-pulse" />}
-            </div>
+                    <div className="flex items-start justify-between mb-4 relative z-10">
+                        <div className="flex items-center gap-3">
+                            <div className="relative">
+                                <img
+                                    src={player.avatar}
+                                    alt={player.name}
+                                    className="w-14 h-14 rounded-2xl object-cover border border-white/10"
+                                />
+                                <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black italic border-2 border-[#0A0A0F] ${isTop3 ? 'bg-white text-black' : 'bg-white/10 text-white'}`}>
+                                    {player.rank}
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-white font-black text-lg tracking-tight truncate max-w-[120px]">{player.name}</h3>
+                                <div className="text-[10px] text-white/40 font-bold uppercase tracking-widest flex items-center gap-1">
+                                    <Zap size={10} className="text-purple-400" /> LVL {player.level}
+                                </div>
+                            </div>
+                        </div>
+                        {isTop3 && <Trophy size={18} className={player.rank === 1 ? 'text-yellow-400' : 'text-white/20'} />}
+                    </div>
 
-            <div className="flex-1 min-w-0">
-                <div className={`text-lg font-black tracking-tight truncate ${isSelected ? 'text-white' : 'text-white/40 group-hover:text-white/60'}`}>
-                    {player.name}
-                </div>
-                <div className="flex items-center gap-2 mt-0.5">
-                    <span className="text-[10px] font-black text-white/20 uppercase">Tier</span>
-                    <div className="flex gap-0.5 opacity-30">
-                        {[...Array(3)].map((_, i) => (
-                            <div key={i} className={`w-1.5 h-1.5 rounded-full ${i < (4 - player.rank) ? 'bg-cyan-500 opacity-100' : 'bg-white'}`} />
-                        ))}
+                    {/* Compact Stats */}
+                    <div className="grid grid-cols-2 gap-2 relative z-10">
+                        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all flex flex-col">
+                            <span className="text-[8px] uppercase font-black text-white/20 mb-1">Kills</span>
+                            <span className="text-sm font-black text-rose-400">{player.kills}</span>
+                        </div>
+                        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all flex flex-col">
+                            <span className="text-[8px] uppercase font-black text-white/20 mb-1">Ratio</span>
+                            <span className="text-sm font-black text-emerald-400">{player.winRate || '---'}</span>
+                        </div>
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-[9px] font-black text-white/20 uppercase tracking-[0.2em]">View Dossier</span>
+                        <ChevronRight size={14} className="text-cyan-500" />
                     </div>
                 </div>
-            </div>
-
-            <div className={`opacity-0 group-hover:opacity-100 transition-opacity ${isSelected ? 'opacity-100' : ''}`}>
-                <ChevronRight size={20} className="text-cyan-500" />
             </div>
         </motion.div>
     )
 }
 
 export default function TopPlayers() {
-    const [selectedIndex, setSelectedIndex] = useState(0)
-    const selectedPlayer = allRankings[selectedIndex]
+    const scrollContainerRef = useRef(null)
 
     return (
-        <section className="relative py-32 bg-[#050508] overflow-hidden min-h-screen flex items-center">
-            {/* Background Texture */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-500/5 blur-[120px] rounded-full transform translate-x-1/2 -translate-y-1/2" />
-                <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-500/5 blur-[120px] rounded-full transform -translate-x-1/2 translate-y-1/2" />
-                <div className="absolute inset-0 grid-pattern opacity-[0.03]" />
-            </div>
+        <section className="relative py-24 bg-[#050508] overflow-hidden">
+            {/* Minimal Background Grid */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
 
-                    {/* Left: Interactive List */}
-                    <div className="lg:col-span-5 order-2 lg:order-1">
-                        <div className="mb-10">
-                            <span className="text-xs font-black text-cyan-400 uppercase tracking-[0.5em] block mb-2">Live Rankings</span>
-                            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic flex items-center gap-4">
-                                <ShieldCheck className="text-cyan-500" /> The Global Elite
-                            </h2>
+                {/* Modern Dashboard Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div className="max-w-2xl">
+                        <div className="flex items-center gap-2 mb-4">
+                            <BarChart2 className="text-cyan-400" size={20} />
+                            <span className="text-xs font-black text-white/40 uppercase tracking-[0.4em]">Combat Analytics</span>
                         </div>
-
-                        <div className="flex flex-col gap-2 max-h-[600px] overflow-y-auto pr-4 scrollbar-hide">
-                            {allRankings.map((player, i) => (
-                                <RankingItem
-                                    key={player.rank}
-                                    player={player}
-                                    index={i}
-                                    isSelected={selectedIndex === i}
-                                    onClick={() => setSelectedIndex(i)}
-                                />
-                            ))}
-                        </div>
-
-                        <div className="mt-8 flex items-center gap-6 p-6 rounded-3xl bg-white/[0.02] border border-white/5">
-                            <div className="flex -space-x-3">
-                                {allRankings.slice(0, 4).map((p, i) => (
-                                    <img key={i} src={p.avatar} className="w-10 h-10 rounded-full border-2 border-[#050508]" />
-                                ))}
-                            </div>
-                            <div className="text-[10px] font-black text-white/30 uppercase leading-tight tracking-[0.1em]">
-                                Join +14K <br /> Registered Agents
-                            </div>
-                        </div>
+                        <h2 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-4">
+                            ELITE <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">DASHBOARD</span>
+                        </h2>
+                        <p className="text-white/30 font-medium text-sm md:text-base leading-relaxed">
+                            A live-updating overview of the top performing agents sorted by combat efficiency and survival metrics.
+                        </p>
                     </div>
 
-                    {/* Right: Legend Detail Showcase */}
-                    <div className="lg:col-span-7 order-1 lg:order-2">
-                        <AnimatePresence mode="wait">
-                            <PlayerDetail player={selectedPlayer} />
-                        </AnimatePresence>
+                    <div className="flex items-center gap-4">
+                        <div className="text-right">
+                            <div className="text-[10px] font-black text-white/20 uppercase">Total Capacity</div>
+                            <div className="text-2xl font-black text-white flex items-center gap-2">
+                                <User size={20} className="text-cyan-500" /> 14,290
+                            </div>
+                        </div>
+                        <div className="h-12 w-px bg-white/10 mx-2" />
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-black text-white uppercase tracking-widest hover:bg-white/10 transition-all"
+                        >
+                            Open Rankings
+                        </motion.button>
                     </div>
-
                 </div>
+
+                {/* Staggered Bento Wall */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    {/* Rank 1 Feature (Spans 2 columns) */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        className="sm:col-span-2 group relative"
+                    >
+                        <div className="p-[1px] rounded-3xl bg-gradient-to-br from-amber-400 to-yellow-600 h-full">
+                            <div className="bg-[#0A0A0F] rounded-[1.7rem] p-8 h-full flex flex-col justify-between relative overflow-hidden">
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 pointer-events-none" />
+                                <div className="absolute -right-20 -top-20 w-64 h-64 bg-yellow-500/10 blur-[80px] rounded-full group-hover:bg-yellow-500/20 transition-all duration-700" />
+
+                                <div className="relative z-10">
+                                    <div className="flex items-center gap-6 mb-8">
+                                        <div className="relative">
+                                            <img
+                                                src={ALL_PLAYERS[0].avatar}
+                                                className="w-24 h-24 rounded-[2rem] border-2 border-yellow-500/50 shadow-2xl origin-bottom group-hover:rotate-[-5deg] transition-transform"
+                                            />
+                                            <div className="absolute -top-3 -right-3 w-10 h-10 bg-yellow-400 text-black rounded-2xl flex items-center justify-center font-black italic shadow-lg">
+                                                01
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span className="text-[10px] font-black text-yellow-500 uppercase tracking-[0.3em] block mb-1">Global Champion</span>
+                                            <h3 className="text-4xl font-black text-white tracking-tighter uppercase">{ALL_PLAYERS[0].name}</h3>
+                                            <div className="flex items-center gap-4 mt-2">
+                                                <div className="flex items-center gap-2 text-xs font-bold text-white/40">
+                                                    <Timer size={12} className="text-cyan-400" /> {ALL_PLAYERS[0].playTime || '542h'}
+                                                </div>
+                                                <div className="flex items-center gap-2 text-xs font-bold text-white/40">
+                                                    <Award size={12} className="text-purple-400" /> MASTER TIER
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-3 gap-4 mb-8">
+                                        {[
+                                            { label: 'Kills', val: ALL_PLAYERS[0].kills, icon: Swords, col: 'text-rose-400' },
+                                            { label: 'Level', val: ALL_PLAYERS[0].level, icon: Zap, col: 'text-yellow-400' },
+                                            { label: 'Wins', val: ALL_PLAYERS[0].winRate || '98%', icon: Award, col: 'text-emerald-400' }
+                                        ].map((s, i) => (
+                                            <div key={i} className="p-4 rounded-2xl bg-white/[0.03] border border-white/5 flex flex-col items-center gap-1 group-hover:bg-white/[0.05] transition-colors">
+                                                <s.icon size={14} className={s.col} />
+                                                <div className="text-[9px] uppercase font-black text-white/20 tracking-widest">{s.label}</div>
+                                                <div className="text-xl font-black text-white">{s.val}</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    className="w-full py-4 rounded-2xl bg-yellow-400 text-black font-black uppercase text-xs tracking-widest relative z-10"
+                                >
+                                    View Full Dossier
+                                </motion.button>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Rest of Top Players in a Grid */}
+                    {ALL_PLAYERS.slice(1, 10).map((player, i) => (
+                        <CompactPlayerCard key={player.rank} player={player} index={i} />
+                    ))}
+
+                    {/* Final "View All" Tile */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        className="flex flex-col justify-center items-center p-8 rounded-3xl bg-white/[0.02] border border-white/5 border-dashed hover:bg-white/[0.04] transition-all group"
+                    >
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 mb-4 group-hover:scale-110 transition-transform">
+                            <ChevronRight className="text-white/20 group-hover:text-cyan-400 transition-colors" />
+                        </div>
+                        <div className="text-center">
+                            <div className="text-xs font-black text-white/40 uppercase tracking-widest mb-1">The Rest</div>
+                            <div className="text-2xl font-black text-white tracking-tighter uppercase whitespace-nowrap">View Global Rankings</div>
+                        </div>
+                    </motion.div>
+                </div>
+
             </div>
         </section>
     )
