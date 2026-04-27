@@ -161,32 +161,22 @@ export const carouselSlides = [
     {
         title: 'New Season Update!',
         description: 'Streamlined gameplay and new features await in Season 4.',
-        image: 'https://www.amd.com/content/dam/amd/en/images/backgrounds/products/2922918-radeon-9000-series-gc.jpg',
+        image: '/carousel/skyblock.png',
     },
     {
         title: 'Weekend Event: Double XP',
         description: 'Grind harder this weekend — double XP all day, every day!',
-        image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=400&fit=crop',
+        image: '/carousel/pvp.png',
     },
     {
         title: 'New Dungeon Released',
         description: 'Brave the Nether Citadel for legendary loot and glory.',
-        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop',
+        image: '/carousel/dungeon.png',
     },
     {
         title: 'PvP Tournament',
         description: 'Register now for the Season 4 PvP Grand Tournament.',
-        image: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&h=400&fit=crop',
-    },
-    {
-        title: 'Community Build Event',
-        description: 'Theme: Future Cities. Best build wins 1000 Legion Coins!',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop',
-    },
-    {
-        title: 'Server Maintenance',
-        description: 'Scheduled downtime on Nov 10, 2-4 AM EST.',
-        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&h=400&fit=crop',
+        image: '/carousel/pvp.png',
     },
 ]
 
