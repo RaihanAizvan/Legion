@@ -10,6 +10,7 @@ import Ranks from '../components/Ranks'
 import Leveling from '../components/Leveling'
 import AfkZone from '../components/AfkZone'
 import Navbar from '../components/Navbar'
+import Vote from '../components/Vote'
 export default function HomePage() {
     return (
         <main className="relative bg-[#050508] min-h-screen text-white overflow-hidden pb-32">
@@ -33,6 +34,7 @@ export default function HomePage() {
             <UniqueFeatures />
             <Ranks />
             <Leveling />
+            <Vote />
             <AfkZone />
             <TopPlayers />
             <FeatureList />
