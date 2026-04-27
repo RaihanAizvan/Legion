@@ -116,7 +116,7 @@ export default function Footer() {
                             <div className="w-10 h-10 rounded-xl bg-cyan-500 flex items-center justify-center text-black">
                                 <ShieldCheck size={24} />
                             </div>
-                            LEGION
+                            <span className="font-[LegionCustom] tracking-[0.1em]">LEGION</span>
                         </div>
                         <p className="text-white/40 text-sm leading-relaxed mb-8 font-medium">
                             The ultimate destination for competitive Skyblock, Dungeons, and Survival. Powered by a custom-engine optimized for high-performance and zero lag.
