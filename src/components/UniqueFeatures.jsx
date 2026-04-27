@@ -91,11 +91,11 @@ export default function UniqueFeatures() {
                     <MagicBento
                         items={NEW_FEATURES}
                         textAutoHide={false}
-                        enableStars={false}
+                        enableStars={true}
                         enableSpotlight={true}
                         enableBorderGlow={true}
-                        enableTilt={false}
-                        enableMagnetism={true}
+                        enableTilt={true}
+                        enableMagnetism={false}
                         clickEffect={true}
                         spotlightRadius={350}
                         particleCount={15}

@@ -39,7 +39,7 @@ function MarqueeRow({ items, direction = 1, speed = 40 }) {
 
 export default function FeatureList() {
     return (
-        <section className="relative py-32 bg-[#050508] overflow-hidden">
+        <section className="relative py-32 overflow-hidden">
             {/* Background Atmosphere */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-cyan-500/[0.02] blur-[150px] rounded-full pointer-events-none" />
 
