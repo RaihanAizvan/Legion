@@ -4,6 +4,7 @@ import Dashboard from '../components/Dashboard'
 import Welcome from '../components/Welcome'
 import Footer from '../components/Footer'
 import UniqueFeatures from '../components/UniqueFeatures'
+import FeatureList from '../components/FeatureList'
 import TopPlayers from '../components/TopPlayers'
 import Ranks from '../components/Ranks'
 import Leveling from '../components/Leveling'
@@ -29,8 +30,9 @@ export default function HomePage() {
             <Hero />
             <Welcome />
             <UniqueFeatures />
-            <Leveling />
+            <FeatureList />
             <Ranks />
+            <Leveling />
             <TopPlayers />
             <Dashboard />
             <Footer />
