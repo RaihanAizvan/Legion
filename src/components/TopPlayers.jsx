@@ -139,31 +139,55 @@ export default function TopPlayers() {
     const [focusedIndex, setFocusedIndex] = useState(0)
 
     return (
-        <section className="relative bg-[#050508] overflow-hidden">
-            {/* Minimal Header (Injected into the layout flow) */}
-            <div className="absolute top-12 left-12 z-50 pointer-events-none">
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="flex items-center gap-3 mb-4">
-                    <span className="w-12 h-px bg-white/20" />
-                    <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.6em]">The Vanguard</span>
-                </motion.div>
-                <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">
-                    LEGION <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white/20 to-white/60">HALL OF FAME</span>
-                </h2>
-            </div>
-
-            {/* Cinematic Side Info (Center Right) */}
-            <div className="absolute top-1/2 right-12 -translate-y-1/2 z-50 hidden lg:block pointer-events-none">
-                <div className="flex flex-col items-center gap-8">
-                    <div className="h-32 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-                    <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] origin-right rotate-90 whitespace-nowrap">
-                        Drag to navigate roster
+        <section className="relative bg-[#050508] overflow-hidden min-h-screen">
+            {/* Main Section Header */}
+            <div className="container mx-auto px-4 pt-32 pb-16 relative z-10">
+                <div className="flex flex-col md:flex-row items-end justify-between gap-8 border-b border-white/5 pb-10">
+                    <div className="max-w-3xl">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            className="flex items-center gap-3 mb-6"
+                        >
+                            <div className="h-px w-12 bg-cyan-500" />
+                            <span className="text-xs font-black text-cyan-400 uppercase tracking-[0.5em]">The Eternal Vanguard</span>
+                        </motion.div>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            className="text-6xl md:text-8xl font-black text-white leading-[0.85] uppercase tracking-tighter mb-8"
+                        >
+                            LEADERBOARD <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">PANTHEON</span>
+                        </motion.h2>
+                        <p className="text-white/40 text-sm md:text-base max-w-xl font-medium leading-relaxed">
+                            These aren't just players; they are the legends who defines Legion's history. Hover over each pillar to debrief on their tactical performance and seasonal achievements.
+                        </p>
                     </div>
-                    <div className="h-32 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+                    <div className="flex flex-col items-end text-right hidden lg:flex">
+                        <div className="text-[10px] font-black text-white/20 uppercase tracking-[0.4em] mb-2">Live Statistics</div>
+                        <div className="text-4xl font-black text-white flex items-center gap-3">
+                            <span className="text-cyan-500 italic">21K</span>
+                            <div className="w-1.5 h-10 bg-white/5" />
+                            <span className="text-white/20">TOTAL PLAYERS</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            {/* The Pillars Layout */}
-            <div className="flex flex-col lg:flex-row w-full min-h-screen overflow-hidden">
+            {/* Sidebar Drag Indicator (Floating) */}
+            <div className="absolute top-1/2 right-12 -translate-y-1/2 z-50 hidden lg:block pointer-events-none opacity-20">
+                <div className="flex flex-col items-center gap-8">
+                    <div className="h-24 w-px bg-white/20" />
+                    <div className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em] origin-right rotate-90 whitespace-nowrap">
+                        Focus a pillar to expand
+                    </div>
+                    <div className="h-24 w-px bg-white/20" />
+                </div>
+            </div>
+
+            {/* The Pillars Layout Container */}
+            <div className="flex flex-col lg:flex-row w-full min-h-[600px] lg:h-[800px] overflow-hidden border-t border-white/5">
                 {ALL_PLAYERS.map((player, i) => (
                     <LegendPillar
                         key={player.rank}
