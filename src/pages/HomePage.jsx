@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import UniqueFeatures from '../components/UniqueFeatures'
 import TopPlayers from '../components/TopPlayers'
 import Ranks from '../components/Ranks'
+import Leveling from '../components/Leveling'
 import Navbar from '../components/Navbar'
 export default function HomePage() {
     return (
@@ -28,8 +29,9 @@ export default function HomePage() {
             <Hero />
             <Welcome />
             <UniqueFeatures />
-            <TopPlayers />
+            <Leveling />
             <Ranks />
+            <TopPlayers />
             <Dashboard />
             <Footer />
         </main>
