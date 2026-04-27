@@ -4,7 +4,7 @@ import { Play, Copy, Check } from 'lucide-react'
 import { serverInfo } from '../lib/constants'
 import toast from 'react-hot-toast'
 import TextPressure from '../components/TextPressure'
-
+import BorderGlow from '../components/BorderGlow'
 function TypingText({ text, className }) {
     const [displayed, setDisplayed] = useState('')
     const [done, setDone] = useState(false)
@@ -103,11 +103,18 @@ export default function Hero() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mt-8 px-4 sm:px-12 w-full grid place-items-center md:flex md:justify-start"
             >
-                <div className="
-        relative w-fit max-w-full sm:max-w-md
-        p-[1px] rounded-xl
-        bg-gradient-to-r from-cyan-400/40 to-blue-500/30
-    ">
+                <BorderGlow
+                    edgeSensitivity={25}
+                    glowColor="20 185 255"
+                    backgroundColor="#050508"
+                    borderRadius={12}
+                    glowRadius={40}
+                    glowIntensity={1.2}
+                    coneSpread={30}
+                    animated={true}
+                    colors={['#14b9ff', '#5b5192', '#38bdf8']}
+                    className="w-fit max-w-full sm:max-w-md"
+                >
 
                     <div className="
             flex items-center gap-2 sm:gap-3
@@ -169,7 +176,7 @@ export default function Hero() {
 
                         </div>
                     </div>
-                </div>
+                </BorderGlow>
             </motion.div>
 
             {/* Scroll indicator - Bottom Right */}
