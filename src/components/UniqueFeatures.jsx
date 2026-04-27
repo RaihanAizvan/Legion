@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import MagicBento from './MagicBento'
+import skyblockVideo from '../assets/videos/skyblock.mp4'
 
 const NEW_FEATURES = [
     {
@@ -8,7 +9,7 @@ const NEW_FEATURES = [
         title: 'Core SkyBlock',
         description: 'Our main experience. Build your island, grind skills, unlock custom enchants, explore dungeons, complete missions, and rise through ranks in the ultimate sky survival world.',
         color: 'rgba(14, 165, 233, 0.05)', // Cyan tint
-        image: 'https://images.unsplash.com/photo-1627856013091-fed6e4e09ba9?q=80&w=1200&auto=format&fit=crop', // Stunning floating island / sci-fi landscape
+        video: skyblockVideo,
     },
     {
         label: 'Minigames',
@@ -90,10 +91,10 @@ export default function UniqueFeatures() {
                     <MagicBento
                         items={NEW_FEATURES}
                         textAutoHide={false}
-                        enableStars={true}
+                        enableStars={false}
                         enableSpotlight={true}
                         enableBorderGlow={true}
-                        enableTilt={true}
+                        enableTilt={false}
                         enableMagnetism={true}
                         clickEffect={true}
                         spotlightRadius={350}

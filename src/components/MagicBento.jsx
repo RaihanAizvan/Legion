@@ -606,14 +606,20 @@ const MagicBento = ({
                                         <div className="absolute inset-0 bg-gradient-to-t from-[var(--background-dark)] via-[var(--background-dark)]/50 to-transparent" />
                                     </div>
                                 )}
+                                {card.video && (
+                                    <div className="absolute inset-0 z-0 pointer-events-none">
+                                        <video src={card.video} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 mix-blend-screen" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--background-dark)] via-[var(--background-dark)]/60 to-transparent" />
+                                    </div>
+                                )}
                                 <div className="card__header flex justify-between gap-3 relative text-white z-10 mb-6">
                                     <span className="card__label text-xs tracking-widest font-bold uppercase text-cyan-400">{card.label}</span>
                                 </div>
                                 <div className="card__content flex flex-col relative text-white z-10 mt-auto">
-                                    <h3 className={`card__title tracking-tight font-display font-bold text-3xl mb-3 ${textAutoHide && !card.image ? 'text-clamp-1' : ''}`}>
+                                    <h3 className={`card__title tracking-tight font-display font-bold text-3xl mb-3 ${textAutoHide && !card.image && !card.video ? 'text-clamp-1' : ''}`}>
                                         {card.title}
                                     </h3>
-                                    <p className={`card__description text-white/60 text-sm md:text-base leading-relaxed ${textAutoHide && !card.image ? 'text-clamp-4' : ''}`}>
+                                    <p className={`card__description text-white/60 text-sm md:text-base leading-relaxed ${textAutoHide && !card.image && !card.video ? 'text-clamp-4' : ''}`}>
                                         {card.description}
                                     </p>
                                 </div>
