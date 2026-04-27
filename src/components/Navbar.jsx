@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Plus } from 'lucide-react'
 
 const NAV_LINKS = [
-    { label: "Base", href: "/" },
-    { label: "Tiers", href: "/#ranks" },
-    { label: "Forum", href: "/#community" },
-    { label: "Vault", href: "/store" },
+    { label: "Home", href: "/" },
+    { label: "Ranks", href: "/#ranks" },
+    { label: "Leaderboard", href: "/#community" },
+    { label: "Events", href: "/#events" },
+    { label: "Vote", href: "/#vote" },
+    { label: "Store", href: "/store" },
 ]
 
 export default function Navbar() {
@@ -27,7 +29,7 @@ export default function Navbar() {
 
                     {/* Flush Branding */}
                     <Link to="/" className="group flex items-center gap-2">
-                        <span className="text-lg font-black text-white uppercase tracking-[0.2em] transition-all group-hover:tracking-[0.4em]">
+                        <span className="text-xl md:text-2xl font-[LegionCustom] text-white tracking-[0.2em] transition-all group-hover:text-cyan-400 group-hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]">
                             LEGION
                         </span>
                         <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
