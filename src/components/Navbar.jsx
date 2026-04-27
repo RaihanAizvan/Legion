@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 const NAV_LINKS = [
-    { label: "Home", href: "/" },
-    { label: "Ranks", href: "/#ranks" },
+    { label: "Overview", href: "/" },
+    { label: "Prestige", href: "/#ranks" },
     { label: "Community", href: "/#community" },
-    { label: "Store", href: "/store" },
+    { label: "Logistics", href: "/store" },
 ]
 
 export default function Navbar() {
@@ -21,98 +21,127 @@ export default function Navbar() {
     }, [])
 
     return (
-        <header className={`fixed top-0 inset-x-0 z-[100] transition-all duration-700 ${scrolled ? 'py-4 bg-black/40 backdrop-blur-xl border-b border-white/5' : 'py-8 bg-transparent'}`}>
-            <div className="container mx-auto px-8 max-w-[1400px]">
-                <div className="flex items-center justify-between">
+        <header className="fixed top-0 inset-x-0 z-[100] pointer-events-none">
+            {/* The Sentinel Line */}
+            <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1.5, ease: "circOut" }}
+                className="absolute top-12 md:top-16 left-8 right-8 h-[1px] bg-white/10 origin-left"
+            />
 
-                    {/* Minimalist Logo */}
-                    <Link to="/" className="group flex items-center relative">
-                        <span className="text-xl font-black text-white uppercase tracking-[0.4em] group-hover:text-cyan-400 transition-colors duration-500">
+            <div className="container mx-auto px-12 pt-12 md:pt-16 flex items-center justify-between">
+
+                {/* Skeletal Branding */}
+                <motion.div
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="pointer-events-auto"
+                >
+                    <Link to="/" className="group flex flex-col pt-4">
+                        <span className="text-xl font-black text-white uppercase tracking-[0.6em] group-hover:text-cyan-400 transition-colors duration-500">
                             LEGION
                         </span>
-                        <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-cyan-400 group-hover:w-full transition-all duration-700 ease-out" />
+                        <span className="text-[7px] font-black text-white/20 uppercase tracking-[0.4em] mt-1">Global Network</span>
                     </Link>
+                </motion.div>
 
-                    {/* Refined Navigation */}
-                    <div className="hidden lg:flex items-center gap-12">
-                        {NAV_LINKS.map((link) => (
+                {/* Linear Navigation */}
+                <div className="hidden lg:flex items-center gap-16 pointer-events-auto pt-4 border-t border-transparent">
+                    {NAV_LINKS.map((link, i) => (
+                        <motion.div
+                            key={link.label}
+                            initial={{ y: -20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.6 + (i * 0.1) }}
+                        >
                             <Link
-                                key={link.label}
                                 to={link.href}
-                                className="relative group overflow-hidden py-1"
+                                className="relative group block"
                             >
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40 group-hover:text-white transition-all duration-500">
+                                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/30 group-hover:text-white transition-all duration-500">
                                     {link.label}
                                 </span>
-                                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-700 ease-out opacity-20" />
+                                {/* Dot indicator that slides on the line */}
+                                <div className="absolute -top-[21px] left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500" />
                             </Link>
-                        ))}
-                    </div>
-
-                    {/* Minimalist Action */}
-                    <div className="flex items-center gap-8">
-                        <Link
-                            to="/play"
-                            className="hidden sm:block text-[10px] font-black uppercase tracking-[0.4em] text-white/50 hover:text-white transition-all relative group"
-                        >
-                            <span>Join Alpha</span>
-                            <span className="absolute -right-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-                        </Link>
-
-                        <button
-                            onClick={() => setMenuOpen(!menuOpen)}
-                            className="lg:hidden w-8 h-8 flex flex-col items-end justify-center gap-1.5 group"
-                        >
-                            <span className={`h-[1px] bg-white transition-all duration-300 ${menuOpen ? 'w-6 translate-y-2 rotate-45' : 'w-6'}`} />
-                            <span className={`h-[1px] bg-white transition-all duration-300 ${menuOpen ? 'opacity-0 w-0' : 'w-4'}`} />
-                            <span className={`h-[1px] bg-white transition-all duration-300 ${menuOpen ? 'w-6 -translate-y-2 -rotate-45' : 'w-5'}`} />
-                        </button>
-                    </div>
-
+                        </motion.div>
+                    ))}
                 </div>
+
+                {/* Geometric Action */}
+                <motion.div
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 1.1 }}
+                    className="flex items-center gap-8 pointer-events-auto pt-4"
+                >
+                    <Link
+                        to="/play"
+                        className="group flex flex-col items-end"
+                    >
+                        <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/50 group-hover:text-cyan-400 transition-colors">Launch</span>
+                            <ArrowUpRight size={12} className="text-white/20 group-hover:text-cyan-400 transition-colors group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </div>
+                        <span className="text-[6px] font-black text-emerald-500/50 uppercase tracking-widest mt-1">Uptime: 99.9%</span>
+                    </Link>
+
+                    {/* Minimalist Toggle */}
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        className="lg:hidden w-8 h-8 flex flex-col items-end justify-center gap-1.5"
+                    >
+                        <span className={`h-px bg-white transition-all ${menuOpen ? 'w-6 rotate-45 translate-y-1' : 'w-6'}`} />
+                        <span className={`h-px bg-white transition-all ${menuOpen ? 'w-6 -rotate-45 -translate-y-1' : 'w-4'}`} />
+                    </button>
+                </motion.div>
+
             </div>
 
-            {/* Ultra-Minimal Overlay Menu */}
+            {/* Architectural Mobile Menu */}
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[150] bg-black backdrop-blur-3xl flex flex-col items-center justify-center lg:hidden"
+                        className="fixed inset-0 z-[150] bg-[#050505] backdrop-blur-3xl flex flex-col pointer-events-auto"
                     >
-                        <button onClick={() => setMenuOpen(false)} className="absolute top-10 right-10 text-white/40 hover:text-white transition-colors">
-                            <X size={32} strokeWidth={1} />
-                        </button>
+                        <div className="p-12 flex justify-between items-start">
+                            <div className="text-xl font-black text-white italic uppercase tracking-tighter">Sentinel_Menu</div>
+                            <button onClick={() => setMenuOpen(false)} className="px-6 py-2 border border-white/10 text-[10px] uppercase tracking-widest text-white/50 hover:text-white transition-colors">
+                                Close
+                            </button>
+                        </div>
 
-                        <div className="flex flex-col items-center gap-12">
+                        <div className="flex-1 flex flex-col justify-center px-12 md:px-32 space-y-8">
                             {NAV_LINKS.map((link, i) => (
                                 <motion.div
                                     key={link.label}
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
+                                    initial={{ x: -20, opacity: 0 }}
+                                    animate={{ x: 0, opacity: 1 }}
                                     transition={{ delay: i * 0.1 }}
                                 >
                                     <Link
                                         to={link.href}
                                         onClick={() => setMenuOpen(false)}
-                                        className="text-4xl font-black text-white/20 hover:text-white uppercase tracking-tighter transition-all italic hover:scale-110"
+                                        className="text-5xl md:text-8xl font-black text-white/5 hover:text-white hover:pl-8 uppercase tracking-tighter transition-all duration-700 block"
                                     >
                                         {link.label}
                                     </Link>
                                 </motion.div>
                             ))}
+                        </div>
 
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                                className="mt-12"
-                            >
-                                <Link to="/play" className="text-xs font-black uppercase tracking-[0.5em] text-cyan-400">
-                                    Start Session —&gt;
-                                </Link>
-                            </motion.div>
+                        <div className="p-12 border-t border-white/5 flex items-center justify-between">
+                            <div className="text-[10px] font-black text-white/20 uppercase tracking-widest leading-loose">
+                                Authorized Session <br /> Legion Network v4.0
+                            </div>
+                            <Link to="/play" className="px-12 py-6 bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-cyan-400 transition-colors">
+                                Connect
+                            </Link>
                         </div>
                     </motion.div>
                 )}
