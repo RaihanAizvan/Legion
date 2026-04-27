@@ -47,7 +47,7 @@ function RewardCard({ item, index }) {
         >
             <div className={`absolute -inset-px bg-gradient-to-br ${item.color} rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm`} />
 
-            <div className="relative h-full bg-[#0A0A0F] border border-white/5 rounded-[2rem] p-8 flex flex-col items-center text-center group-hover:border-white/10 transition-colors">
+            <div className="relative h-full bg-transparent border border-white/5 rounded-[2rem] p-8 flex flex-col items-center text-center group-hover:border-white/10 transition-colors">
                 <div className={`w-20 h-20 rounded-2xl bg-white/[0.03] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 relative`}>
                     {item.icon}
                     <div className={`absolute -inset-2 rounded-2xl ${item.accent} opacity-0 group-hover:opacity-5 blur-xl transition-opacity`} />
@@ -93,7 +93,7 @@ export default function AfkZone() {
                     </motion.div>
 
                     <h2 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-[0.85] mb-8">
-                        ZENITH <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 italic">AFK ZONE</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 italic">AFK ZONE</span>
                     </h2>
 
                     <div className="max-w-2xl bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-8 md:p-10 backdrop-blur-3xl relative group overflow-hidden">
