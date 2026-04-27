@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Bell, Activity, Zap, Shield, Crown, Globe, Radio, Database, Heart, MessageSquare, Share2, Info, Swords, Trophy, Users, Terminal, Megaphone, Server } from 'lucide-react'
 import { notices, activity, serverInfo, topPlayers, carouselSlides } from '../lib/constants'
 import Carousel from './Carousel'
+import SystemLogs from './SystemLogs'
 
 // Map carousel slides to the new Carousel component format
 const CAROUSEL_ITEMS = carouselSlides.map((slide, i) => ({
@@ -195,41 +196,32 @@ export default function Dashboard() {
 
                     <div className="lg:col-span-4">
                         <div className="p-8 rounded-[2.5rem] bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/10 h-full flex flex-col justify-between relative overflow-hidden group">
-                            {/* Decorative Background Icon */}
-                            <Trophy size={200} className="absolute -bottom-10 -right-10 text-white/[0.02] rotate-12 group-hover:rotate-0 transition-transform duration-1000" />
+                            <div className="relative z-10 h-full flex flex-col">
+                                <div className="mb-10">
+                                    <div className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em] mb-4">Intelligence Hub</div>
+                                    <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none italic">S4 GLOBAL <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white">TELEMETRY</span></h3>
+                                </div>
 
-                            <div className="relative z-10">
-                                <div className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em] mb-4">Elite Spotlight</div>
-                                <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none mb-6 italic">Season 4 <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white">Hall of Glory</span></h3>
+                                <div className="flex-1 min-h-[300px]">
+                                    <SystemLogs />
+                                </div>
 
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-4">
-                                        <img src={topPlayers[0].avatar} className="w-12 h-12 rounded-xl border border-white/20 shadow-2xl" />
-                                        <div>
-                                            <div className="text-sm font-black text-white uppercase tracking-tight">{topPlayers[0].name}</div>
-                                            <div className="text-[9px] text-cyan-400 font-bold uppercase tracking-widest">Current Sovereign</div>
+                                <div className="mt-8 pt-6 border-t border-white/5 space-y-4">
+                                    <div className="flex items-center justify-between">
+                                        <div className="text-[8px] font-black text-white/20 uppercase whitespace-nowrap">Current Sovereign</div>
+                                        <div className="flex items-center gap-2">
+                                            <img src={topPlayers[0].avatar} className="w-5 h-5 rounded-md border border-white/10" />
+                                            <span className="text-[10px] font-black text-white">{topPlayers[0].name}</span>
                                         </div>
                                     </div>
-                                    <div className="h-px bg-white/5" />
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <div className="text-[8px] font-black text-white/20 uppercase">Total Agents</div>
-                                            <div className="text-lg font-black text-white tracking-widest">14.3K</div>
-                                        </div>
-                                        <div>
-                                            <div className="text-[8px] font-black text-white/20 uppercase">Network Health</div>
-                                            <div className="text-lg font-black text-green-500 tracking-widest">GOOD</div>
+                                    <div className="flex items-center justify-between">
+                                        <div className="text-[8px] font-black text-white/20 uppercase">Network Load</div>
+                                        <div className="text-[10px] font-black text-emerald-500 tracking-widest uppercase flex items-center gap-1.5">
+                                            <Activity size={10} /> OPTIMAL
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                className="w-full py-4 rounded-2xl bg-white text-black font-black uppercase text-xs tracking-widest mt-12 relative z-10"
-                            >
-                                Open Full Stats
-                            </motion.button>
                         </div>
                     </div>
 
